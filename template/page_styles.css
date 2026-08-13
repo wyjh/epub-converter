@@ -1,0 +1,10 @@
+@page {
+  margin-bottom: 5pt;
+  margin-top: 5pt;
+}
+@font-face {
+  font-family: "PingFang SC";
+  panose-1: 2 11 3 0 0 0 0 0 0 0;
+  src: url(fonts/PingFang-SC-Light.otf);
+  font-weight: 300;
+}

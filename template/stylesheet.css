@@ -1,0 +1,90 @@
+.author {
+  display: block;
+  margin-top: 0;
+}
+.calibre {
+  display: block;
+  font-family: "PingFang SC", sans-serif;
+  font-size: 1em;
+  padding-left: 0;
+  padding-right: 0;
+  text-align: center;
+  margin: 0 5pt;
+}
+.calibre1 {
+  height: auto;
+  width: 100%;
+}
+.calibre2 {
+  display: block;
+  font-size: 1.125em;
+  font-weight: bold;
+  line-height: 1.2;
+  margin: 5% 0 0.67em;
+}
+.calibre3 {
+  font-weight: bold;
+}
+.calibre4 {
+  font-size: 0.75em;
+}
+.calibre5 {
+  display: block;
+  font-family: "PingFang SC", sans-serif;
+  font-size: 1em;
+  line-height: 130%;
+  text-align: justify;
+  margin: 0 5pt;
+  padding: 0% 0;
+}
+.calibre6 {
+  display: block;
+  font-family: "DK-SONGTI", "st", "宋体", "zw", sans-serif;
+  line-height: 130%;
+  margin-bottom: 1em;
+  margin-top: 1em;
+  text-align: justify;
+  text-indent: 2em;
+}
+.calibre7 {
+  display: block;
+}
+.chapter-sequence-number {
+  background-color: #3f83e8;
+  border-radius: 9px;
+  color: #fff;
+  font-family: "仿宋";
+  font-size: 0.66667em;
+  padding: 4px;
+}
+.head {
+  color: #BA2213;
+  display: block;
+  duokan-text-indent: 0;
+  font-family: "方正小标宋_GBK", "DK-XIAOBIAOSONG";
+  font-size: 1.41667em;
+  font-weight: bold;
+  line-height: 130%;
+  text-align: center;
+  text-indent: 0;
+  margin: 2em 0;
+  padding: auto;
+}
+.head1 {
+  color: #3f83e8;
+  display: block;
+  font-family: "小标宋";
+  font-size: 1.125em;
+  font-weight: bold;
+  line-height: 140%;
+  text-align: left;
+  margin: -3em 2em 2em 0;
+}
+.pic {
+  background-color: rgba(250, 250, 250, 0);
+  border-radius: 1px;
+  display: block;
+  margin: 50% 30% 0;
+  padding: 2px;
+  border: #f5f5dc solid 1px;
+}

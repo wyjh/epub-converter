@@ -1,0 +1,21 @@
+__pycache__/
+*.pyc
+
+# 运行数据目录（不纳入仓库）
+input/
+meta/
+work/
+demo/
+output/
+logs/
+.processed.json
+tests/input/
+
+# 工作区元数据
+.codex/
+.agents/
+
+# 苹方字体体积大且有版权，建议本地提供、不随仓库上传
+fonts/
+
+.DS_Store

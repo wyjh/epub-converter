@@ -1,0 +1,131 @@
+template_name: 参考样例模板（没有名字的人 - Foxfoxbee）
+source_epub: 没有名字的人 - Foxfoxbee.epub
+extracted_at: '2026-08-11T17:08:55+08:00'
+calibre_version: 7.10.0
+cover:
+  width: 440
+  height: 578
+  format: jpeg
+  quality: 98
+  color_mode: RGB
+fonts:
+  embedded:
+  - family: PingFang SC
+    weight: '300'
+    sample_file: PingFang-SC-Light.otf
+    provided_file: PingFang-SC-Light.otf
+  css_files:
+  - stylesheet.css
+  - page_styles.css
+  - page_styles1.css
+typography:
+  page_margins:
+    top: 5pt
+    bottom: 5pt
+  cover_page:
+    class: calibre
+    title_class: calibre2
+    author_class: author
+    values:
+      display: block
+      font-family: '"PingFang SC", sans-serif'
+      font-size: 1em
+      padding-left: '0'
+      padding-right: '0'
+      text-align: center
+      margin: 0 5pt
+  body:
+    class: calibre5
+    values:
+      display: block
+      font-family: '"PingFang SC", sans-serif'
+      font-size: 1em
+      line-height: 130%
+      text-align: justify
+      margin: 0 5pt
+      padding: 0% 0
+  paragraph:
+    class: calibre6
+    values:
+      display: block
+      font-family: '"DK-SONGTI", "st", "宋体", "zw", sans-serif'
+      line-height: 130%
+      margin-bottom: 1em
+      margin-top: 1em
+      text-align: justify
+      text-indent: 2em
+  chapter_heading:
+    class: head1
+    values:
+      color: '#3f83e8'
+      display: block
+      font-family: '"小标宋"'
+      font-size: 1.125em
+      font-weight: bold
+      line-height: 140%
+      text-align: left
+      margin: -3em 2em 2em 0
+  intro_heading:
+    class: head
+    values:
+      color: '#BA2213'
+      display: block
+      duokan-text-indent: '0'
+      font-family: '"方正小标宋_GBK", "DK-XIAOBIAOSONG"'
+      font-size: 1.41667em
+      font-weight: bold
+      line-height: 130%
+      text-align: center
+      text-indent: '0'
+      margin: 2em 0
+      padding: auto
+  chapter_badge:
+    class: chapter-sequence-number
+    values:
+      background-color: '#3f83e8'
+      border-radius: 9px
+      color: '#fff'
+      font-family: '"仿宋"'
+      font-size: 0.66667em
+      padding: 4px
+metadata_page:
+  heading: 内容简介
+  heading_class: head
+  paragraph_class: calibre6
+toc:
+  cover_label: 封面
+  intro_label: 简介
+  intro_page_heading: 内容简介
+  heading_xpath: //h:h1 | //h:h2
+  chapter_xpath: //h:h2
+sample_metadata:
+  title: 没有名字的人
+  author: Foxfoxbee
+  publisher: 北京联合出版公司
+  language: zh
+  date: '2018-04-30T16:00:00+00:00'
+  tags:
+  - 悬疑
+  - 好书，值得一读
+  - 科幻
+  - 小说
+  - 科幻小说
+  - 文学
+  - 太好看了。
+  - 雁北堂出品，必属精品
+  description: '&lt;div&gt; &lt;p&gt;一个叫汪旺旺的少女，因为名字而被人从小笑到大。十五岁那年，父亲离奇去世，她被一群非人怪物盯上！更奇怪的是，他们一直在追问她的名字。亡命奔逃中，七路迷宫、尘封日记、微能力者，一系列“超自然”事件接踵而来……通过父亲的日记，她得知家族血统的历史——原来一切都源自二战时期德国人在西藏寻找到的“神的基因”！然而想解开最后的真相，还需要一把钥匙，那就是汪旺旺真正的名字。&lt;/p&gt;
+    &lt;p&gt; &lt;/p&gt;&lt;/div&gt;'
+text_cleaning:
+  max_blank_lines: 1
+  merge_wrapped_lines: true
+  normalize_chapter_numbers: true
+  junk_patterns:
+  - ^\s*[（(【\[]?(本章未完|下一章|最新章节|请记住(本站|本书)|手机用户|最快更新|无广告|全文阅读|笔趣阁|顶点小说|酷匠网|新笔趣阁)[^。！？]{0,40}[）)】\]]?\s*$
+  - ^https?://\S+$
+  - ^www\.\S+$
+  - ^\s*[\[\(【]?(本章完|全文完)[\]\)】]?\s*$
+  chapter_patterns:
+  - ^\s*第\s*[0-9零一二三四五六七八九十百千两]+\s*[章回节卷部篇集]
+  - ^\s*(序章|楔子|引子|前言|尾声|后记|番外|外传|终章|终曲)
+  - ^\s*(Chapter|CHAPTER|chapter)\s+\d+
+  fallback_chapter_title: 正文

@@ -1,0 +1,9 @@
+.git
+output
+logs
+__pycache__
+*.pyc
+.DS_Store
+tests
+.codex
+.agents

@@ -1,0 +1,1701 @@
+<?xml version='1.0' encoding='utf-8'?>
+<ncx xmlns="http://www.daisy.org/z3986/2005/ncx/" version="2005-1" xml:lang="zho">
+  <head>
+    <meta name="dtb:uid" content="5b5ac77c-5fdd-4da5-a60d-5f105d3363ee"/>
+    <meta name="dtb:depth" content="2"/>
+    <meta name="dtb:generator" content="calibre (7.10.0)"/>
+    <meta name="dtb:totalPageCount" content="0"/>
+    <meta name="dtb:maxPageNumber" content="0"/>
+  </head>
+  <docTitle>
+    <text>没有名字的人</text>
+  </docTitle>
+  <navMap>
+    <navPoint id="navPoint-1" playOrder="1" class="chapter">
+      <navLabel>
+        <text>封面</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/cover.html"/>
+    </navPoint>
+    <navPoint id="navPoint-2" playOrder="2" class="chapter">
+      <navLabel>
+        <text>简介</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/intro.html"/>
+    </navPoint>
+    <navPoint id="navPoint-3" playOrder="3" class="chapter">
+      <navLabel>
+        <text>第1章 我的名字</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_0.html"/>
+    </navPoint>
+    <navPoint id="navPoint-4" playOrder="4" class="chapter">
+      <navLabel>
+        <text>第2章 带子神马的都是骗人的</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_1.html"/>
+    </navPoint>
+    <navPoint id="navPoint-5" playOrder="5" class="chapter">
+      <navLabel>
+        <text>第3章 晴天霹雳</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_2.html"/>
+    </navPoint>
+    <navPoint id="navPoint-6" playOrder="6" class="chapter">
+      <navLabel>
+        <text>第4章 家中奇遇</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_3.html"/>
+    </navPoint>
+    <navPoint id="navPoint-7" playOrder="7" class="chapter">
+      <navLabel>
+        <text>第5章 七路迷宫</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_4.html"/>
+    </navPoint>
+    <navPoint id="navPoint-8" playOrder="8" class="chapter">
+      <navLabel>
+        <text>第6章 你叫什么名字</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_5.html"/>
+    </navPoint>
+    <navPoint id="navPoint-9" playOrder="9" class="chapter">
+      <navLabel>
+        <text>第7章 妈妈不见了</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_6.html"/>
+    </navPoint>
+    <navPoint id="navPoint-10" playOrder="10" class="chapter">
+      <navLabel>
+        <text>第8章 四封信</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_7.html"/>
+    </navPoint>
+    <navPoint id="navPoint-11" playOrder="11" class="chapter">
+      <navLabel>
+        <text>第9章 尘封的日记</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_8.html"/>
+    </navPoint>
+    <navPoint id="navPoint-12" playOrder="12" class="chapter">
+      <navLabel>
+        <text>第10章 约书亚大厦</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_9.html"/>
+    </navPoint>
+    <navPoint id="navPoint-13" playOrder="13" class="chapter">
+      <navLabel>
+        <text>第11章 半夜怪声</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_10.html"/>
+    </navPoint>
+    <navPoint id="navPoint-14" playOrder="14" class="chapter">
+      <navLabel>
+        <text>第12章 飞来横福</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_11.html"/>
+    </navPoint>
+    <navPoint id="navPoint-15" playOrder="15" class="chapter">
+      <navLabel>
+        <text>第13章 你怕你会生下一个怪物</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_12.html"/>
+    </navPoint>
+    <navPoint id="navPoint-16" playOrder="16" class="chapter">
+      <navLabel>
+        <text>第14章 梦游</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_13.html"/>
+    </navPoint>
+    <navPoint id="navPoint-17" playOrder="17" class="chapter">
+      <navLabel>
+        <text>第15章 贫民窟的愚人</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_14.html"/>
+    </navPoint>
+    <navPoint id="navPoint-18" playOrder="18" class="chapter">
+      <navLabel>
+        <text>第16章 三个梦用掉了两个</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_15.html"/>
+    </navPoint>
+    <navPoint id="navPoint-19" playOrder="19" class="chapter">
+      <navLabel>
+        <text>第17章 重访610</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_16.html"/>
+    </navPoint>
+    <navPoint id="navPoint-20" playOrder="20" class="chapter">
+      <navLabel>
+        <text>第18章 吉普赛人来自何方</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_17.html"/>
+    </navPoint>
+    <navPoint id="navPoint-21" playOrder="21" class="chapter">
+      <navLabel>
+        <text>第19章 玛丽亚和玩具屋</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_18.html"/>
+    </navPoint>
+    <navPoint id="navPoint-22" playOrder="22" class="chapter">
+      <navLabel>
+        <text>第20章 非人</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_19.html"/>
+    </navPoint>
+    <navPoint id="navPoint-23" playOrder="23" class="chapter">
+      <navLabel>
+        <text>第21章 约翰森.H</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_20.html"/>
+    </navPoint>
+    <navPoint id="navPoint-24" playOrder="24" class="chapter">
+      <navLabel>
+        <text>第22章 双头蛇神</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_21.html"/>
+    </navPoint>
+    <navPoint id="navPoint-25" playOrder="25" class="chapter">
+      <navLabel>
+        <text>第23章 粉笔画的门</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_22.html"/>
+    </navPoint>
+    <navPoint id="navPoint-26" playOrder="26" class="chapter">
+      <navLabel>
+        <text>第24章 五十年前的回忆</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_23.html"/>
+    </navPoint>
+    <navPoint id="navPoint-27" playOrder="27" class="chapter">
+      <navLabel>
+        <text>第25章 怀孕</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_24.html"/>
+    </navPoint>
+    <navPoint id="navPoint-28" playOrder="28" class="chapter">
+      <navLabel>
+        <text>第26章 他在我脑子里</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_25.html"/>
+    </navPoint>
+    <navPoint id="navPoint-29" playOrder="29" class="chapter">
+      <navLabel>
+        <text>第27章 双生子</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_26.html"/>
+    </navPoint>
+    <navPoint id="navPoint-30" playOrder="30" class="chapter">
+      <navLabel>
+        <text>第28章 43号和44号的过去</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_27.html"/>
+    </navPoint>
+    <navPoint id="navPoint-31" playOrder="31" class="chapter">
+      <navLabel>
+        <text>第29章 生命之泉的枯竭</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_28.html"/>
+    </navPoint>
+    <navPoint id="navPoint-32" playOrder="32" class="chapter">
+      <navLabel>
+        <text>第30章 三个梦</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_29.html"/>
+    </navPoint>
+    <navPoint id="navPoint-33" playOrder="33" class="chapter">
+      <navLabel>
+        <text>第31章 安菲斯比纳的秘密</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_30.html"/>
+    </navPoint>
+    <navPoint id="navPoint-34" playOrder="34" class="chapter">
+      <navLabel>
+        <text>第32章 你打开门了吗？</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_31.html"/>
+    </navPoint>
+    <navPoint id="navPoint-35" playOrder="35" class="chapter">
+      <navLabel>
+        <text>第33章 另一个噩梦的开始</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_32.html"/>
+    </navPoint>
+    <navPoint id="navPoint-36" playOrder="36" class="chapter">
+      <navLabel>
+        <text>第34章 欺骗你的大脑</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_33.html"/>
+    </navPoint>
+    <navPoint id="navPoint-37" playOrder="37" class="chapter">
+      <navLabel>
+        <text>第35章 照片上的女孩</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_34.html"/>
+    </navPoint>
+    <navPoint id="navPoint-38" playOrder="38" class="chapter">
+      <navLabel>
+        <text>第36章 保险库</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_35.html"/>
+    </navPoint>
+    <navPoint id="navPoint-39" playOrder="39" class="chapter">
+      <navLabel>
+        <text>第37章 汉堡包的回忆</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_36.html"/>
+    </navPoint>
+    <navPoint id="navPoint-40" playOrder="40" class="chapter">
+      <navLabel>
+        <text>第38章 每个人都是迷宫的分</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_37.html"/>
+    </navPoint>
+    <navPoint id="navPoint-41" playOrder="41" class="chapter">
+      <navLabel>
+        <text>第39章 一诺千金</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_38.html"/>
+    </navPoint>
+    <navPoint id="navPoint-42" playOrder="42" class="chapter">
+      <navLabel>
+        <text>第40章 独自上路</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_39.html"/>
+    </navPoint>
+    <navPoint id="navPoint-43" playOrder="43" class="chapter">
+      <navLabel>
+        <text>第41章 爸爸妈妈</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_40.html"/>
+    </navPoint>
+    <navPoint id="navPoint-44" playOrder="44" class="chapter">
+      <navLabel>
+        <text>第42章 天台</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_41.html"/>
+    </navPoint>
+    <navPoint id="navPoint-45" playOrder="45" class="chapter">
+      <navLabel>
+        <text>第43章 关于永生</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_42.html"/>
+    </navPoint>
+    <navPoint id="navPoint-46" playOrder="46" class="chapter">
+      <navLabel>
+        <text>第44章 罗德先生</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_43.html"/>
+    </navPoint>
+    <navPoint id="navPoint-47" playOrder="47" class="chapter">
+      <navLabel>
+        <text>第45章 我做过的最不平凡的事</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_44.html"/>
+    </navPoint>
+    <navPoint id="navPoint-48" playOrder="48" class="chapter">
+      <navLabel>
+        <text>第46章 基因记忆</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_45.html"/>
+    </navPoint>
+    <navPoint id="navPoint-49" playOrder="49" class="chapter">
+      <navLabel>
+        <text>第47章 索多玛城</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_46.html"/>
+    </navPoint>
+    <navPoint id="navPoint-50" playOrder="50" class="chapter">
+      <navLabel>
+        <text>第48章 离开学校的那一天</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_47.html"/>
+    </navPoint>
+    <navPoint id="navPoint-51" playOrder="51" class="chapter">
+      <navLabel>
+        <text>第49章 唯一的朋友</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_48.html"/>
+    </navPoint>
+    <navPoint id="navPoint-52" playOrder="52" class="chapter">
+      <navLabel>
+        <text>第50章 楔子</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_49.html"/>
+    </navPoint>
+    <navPoint id="navPoint-53" playOrder="53" class="chapter">
+      <navLabel>
+        <text>第51章 奇葩社团</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_50.html"/>
+    </navPoint>
+    <navPoint id="navPoint-54" playOrder="54" class="chapter">
+      <navLabel>
+        <text>第52章 微能力者</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_51.html"/>
+    </navPoint>
+    <navPoint id="navPoint-55" playOrder="55" class="chapter">
+      <navLabel>
+        <text>第53章 雨快停了，一会一起走回家</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_52.html"/>
+    </navPoint>
+    <navPoint id="navPoint-56" playOrder="56" class="chapter">
+      <navLabel>
+        <text>第54章 关公战秦琼</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_53.html"/>
+    </navPoint>
+    <navPoint id="navPoint-57" playOrder="57" class="chapter">
+      <navLabel>
+        <text>第55章 暴雨将至1</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_54.html"/>
+    </navPoint>
+    <navPoint id="navPoint-58" playOrder="58" class="chapter">
+      <navLabel>
+        <text>第56章 暴雨将至2</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_55.html"/>
+    </navPoint>
+    <navPoint id="navPoint-59" playOrder="59" class="chapter">
+      <navLabel>
+        <text>第57章 计算未来的公式</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_56.html"/>
+    </navPoint>
+    <navPoint id="navPoint-60" playOrder="60" class="chapter">
+      <navLabel>
+        <text>第58章 迷雾</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_57.html"/>
+    </navPoint>
+    <navPoint id="navPoint-61" playOrder="61" class="chapter">
+      <navLabel>
+        <text>第59章 前进还是回头</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_58.html"/>
+    </navPoint>
+    <navPoint id="navPoint-62" playOrder="62" class="chapter">
+      <navLabel>
+        <text>第60章 蓝光的源头</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_59.html"/>
+    </navPoint>
+    <navPoint id="navPoint-63" playOrder="63" class="chapter">
+      <navLabel>
+        <text>第61章 当铁鹰飞翔之时</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_60.html"/>
+    </navPoint>
+    <navPoint id="navPoint-64" playOrder="64" class="chapter">
+      <navLabel>
+        <text>第62章 舒月的回忆</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_61.html"/>
+    </navPoint>
+    <navPoint id="navPoint-65" playOrder="65" class="chapter">
+      <navLabel>
+        <text>第63章 四个人的秘密</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_62.html"/>
+    </navPoint>
+    <navPoint id="navPoint-66" playOrder="66" class="chapter">
+      <navLabel>
+        <text>第64章 三年前</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_63.html"/>
+    </navPoint>
+    <navPoint id="navPoint-67" playOrder="67" class="chapter">
+      <navLabel>
+        <text>第65章 消失</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_64.html"/>
+    </navPoint>
+    <navPoint id="navPoint-68" playOrder="68" class="chapter">
+      <navLabel>
+        <text>第66章 怀疑</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_65.html"/>
+    </navPoint>
+    <navPoint id="navPoint-69" playOrder="69" class="chapter">
+      <navLabel>
+        <text>第67章 最聪明的软体动物</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_66.html"/>
+    </navPoint>
+    <navPoint id="navPoint-70" playOrder="70" class="chapter">
+      <navLabel>
+        <text>第68章 上帝不掷骰子</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_67.html"/>
+    </navPoint>
+    <navPoint id="navPoint-71" playOrder="71" class="chapter">
+      <navLabel>
+        <text>第69章 错版的25美分硬币</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_68.html"/>
+    </navPoint>
+    <navPoint id="navPoint-72" playOrder="72" class="chapter">
+      <navLabel>
+        <text>第70章 裂缝</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_69.html"/>
+    </navPoint>
+    <navPoint id="navPoint-73" playOrder="73" class="chapter">
+      <navLabel>
+        <text>第71章 被自动贩卖机压住的硬币</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_70.html"/>
+    </navPoint>
+    <navPoint id="navPoint-74" playOrder="74" class="chapter">
+      <navLabel>
+        <text>第72章 再见马修</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_71.html"/>
+    </navPoint>
+    <navPoint id="navPoint-75" playOrder="75" class="chapter">
+      <navLabel>
+        <text>第73章 天才</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_72.html"/>
+    </navPoint>
+    <navPoint id="navPoint-76" playOrder="76" class="chapter">
+      <navLabel>
+        <text>第74章 分别时刻</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_73.html"/>
+    </navPoint>
+    <navPoint id="navPoint-77" playOrder="77" class="chapter">
+      <navLabel>
+        <text>第75章 海豚湾</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_74.html"/>
+    </navPoint>
+    <navPoint id="navPoint-78" playOrder="78" class="chapter">
+      <navLabel>
+        <text>第76章 数字在窃窃私语</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_75.html"/>
+    </navPoint>
+    <navPoint id="navPoint-79" playOrder="79" class="chapter">
+      <navLabel>
+        <text>第77章 生命的凛冬</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_76.html"/>
+    </navPoint>
+    <navPoint id="navPoint-80" playOrder="80" class="chapter">
+      <navLabel>
+        <text>第78章 时间的形状</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_77.html"/>
+    </navPoint>
+    <navPoint id="navPoint-81" playOrder="81" class="chapter">
+      <navLabel>
+        <text>第79章 取消资格</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_78.html"/>
+    </navPoint>
+    <navPoint id="navPoint-82" playOrder="82" class="chapter">
+      <navLabel>
+        <text>第80章 不存在的人</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_79.html"/>
+    </navPoint>
+    <navPoint id="navPoint-83" playOrder="83" class="chapter">
+      <navLabel>
+        <text>第81章 第一次见面</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_80.html"/>
+    </navPoint>
+    <navPoint id="navPoint-84" playOrder="84" class="chapter">
+      <navLabel>
+        <text>第82章 你杀过人吗</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_81.html"/>
+    </navPoint>
+    <navPoint id="navPoint-85" playOrder="85" class="chapter">
+      <navLabel>
+        <text>第83章 河滩上</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_82.html"/>
+    </navPoint>
+    <navPoint id="navPoint-86" playOrder="86" class="chapter">
+      <navLabel>
+        <text>第84章 回家</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_83.html"/>
+    </navPoint>
+    <navPoint id="navPoint-87" playOrder="87" class="chapter">
+      <navLabel>
+        <text>第85章 完美的案发现场</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_84.html"/>
+    </navPoint>
+    <navPoint id="navPoint-88" playOrder="88" class="chapter">
+      <navLabel>
+        <text>第86章 爆炸</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_85.html"/>
+    </navPoint>
+    <navPoint id="navPoint-89" playOrder="89" class="chapter">
+      <navLabel>
+        <text>第87章 葬礼</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_86.html"/>
+    </navPoint>
+    <navPoint id="navPoint-90" playOrder="90" class="chapter">
+      <navLabel>
+        <text>第88章 屋子里的第三个人</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_87.html"/>
+    </navPoint>
+    <navPoint id="navPoint-91" playOrder="91" class="chapter">
+      <navLabel>
+        <text>第89章 破绽</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_88.html"/>
+    </navPoint>
+    <navPoint id="navPoint-92" playOrder="92" class="chapter">
+      <navLabel>
+        <text>第90章 皮囊</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_89.html"/>
+    </navPoint>
+    <navPoint id="navPoint-93" playOrder="93" class="chapter">
+      <navLabel>
+        <text>第91章 贤者之石</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_90.html"/>
+    </navPoint>
+    <navPoint id="navPoint-94" playOrder="94" class="chapter">
+      <navLabel>
+        <text>第92章 荒原客栈</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_91.html"/>
+    </navPoint>
+    <navPoint id="navPoint-95" playOrder="95" class="chapter">
+      <navLabel>
+        <text>第93章 寄售店</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_92.html"/>
+    </navPoint>
+    <navPoint id="navPoint-96" playOrder="96" class="chapter">
+      <navLabel>
+        <text>第94章 节子的秘密</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_93.html"/>
+    </navPoint>
+    <navPoint id="navPoint-97" playOrder="97" class="chapter">
+      <navLabel>
+        <text>第95章 蜂巢</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_94.html"/>
+    </navPoint>
+    <navPoint id="navPoint-98" playOrder="98" class="chapter">
+      <navLabel>
+        <text>第96章 回形针行动</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_95.html"/>
+    </navPoint>
+    <navPoint id="navPoint-99" playOrder="99" class="chapter">
+      <navLabel>
+        <text>第97章 MK57</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_96.html"/>
+    </navPoint>
+    <navPoint id="navPoint-100" playOrder="100" class="chapter">
+      <navLabel>
+        <text>第98章 Ashely Town</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_97.html"/>
+    </navPoint>
+    <navPoint id="navPoint-101" playOrder="101" class="chapter">
+      <navLabel>
+        <text>第99章 犹他州 盐湖城</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_98.html"/>
+    </navPoint>
+    <navPoint id="navPoint-102" playOrder="102" class="chapter">
+      <navLabel>
+        <text>第100章 消失的小镇</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_99.html"/>
+    </navPoint>
+    <navPoint id="navPoint-103" playOrder="103" class="chapter">
+      <navLabel>
+        <text>第101章 变化</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_100.html"/>
+    </navPoint>
+    <navPoint id="navPoint-104" playOrder="104" class="chapter">
+      <navLabel>
+        <text>第102章 达尔文和沙耶加</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_101.html"/>
+    </navPoint>
+    <navPoint id="navPoint-105" playOrder="105" class="chapter">
+      <navLabel>
+        <text>第103章 第五个人</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_102.html"/>
+    </navPoint>
+    <navPoint id="navPoint-106" playOrder="106" class="chapter">
+      <navLabel>
+        <text>第104章 巧合</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_103.html"/>
+    </navPoint>
+    <navPoint id="navPoint-107" playOrder="107" class="chapter">
+      <navLabel>
+        <text>第105章 航班延误</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_104.html"/>
+    </navPoint>
+    <navPoint id="navPoint-108" playOrder="108" class="chapter">
+      <navLabel>
+        <text>第106章 抢救</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_105.html"/>
+    </navPoint>
+    <navPoint id="navPoint-109" playOrder="109" class="chapter">
+      <navLabel>
+        <text>第107章 试验</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_106.html"/>
+    </navPoint>
+    <navPoint id="navPoint-110" playOrder="110" class="chapter">
+      <navLabel>
+        <text>第108章 出发前</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_107.html"/>
+    </navPoint>
+    <navPoint id="navPoint-111" playOrder="111" class="chapter">
+      <navLabel>
+        <text>第109章 神秘的电台信号</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_108.html"/>
+    </navPoint>
+    <navPoint id="navPoint-112" playOrder="112" class="chapter">
+      <navLabel>
+        <text>第110章 鬼镇</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_109.html"/>
+    </navPoint>
+    <navPoint id="navPoint-113" playOrder="113" class="chapter">
+      <navLabel>
+        <text>第111章 遇袭</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_110.html"/>
+    </navPoint>
+    <navPoint id="navPoint-114" playOrder="114" class="chapter">
+      <navLabel>
+        <text>第112章 加里</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_111.html"/>
+    </navPoint>
+    <navPoint id="navPoint-115" playOrder="115" class="chapter">
+      <navLabel>
+        <text>第113章 多多</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_112.html"/>
+    </navPoint>
+    <navPoint id="navPoint-116" playOrder="116" class="chapter">
+      <navLabel>
+        <text>第114章 你吃过巧克力吗</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_113.html"/>
+    </navPoint>
+    <navPoint id="navPoint-117" playOrder="117" class="chapter">
+      <navLabel>
+        <text>第115章 噩梦</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_114.html"/>
+    </navPoint>
+    <navPoint id="navPoint-118" playOrder="118" class="chapter">
+      <navLabel>
+        <text>第116章 伊邪那岐和伊邪那美</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_115.html"/>
+    </navPoint>
+    <navPoint id="navPoint-119" playOrder="119" class="chapter">
+      <navLabel>
+        <text>第117章 马绍尔群岛</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_116.html"/>
+    </navPoint>
+    <navPoint id="navPoint-120" playOrder="120" class="chapter">
+      <navLabel>
+        <text>第118章 失而复得的胖子</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_117.html"/>
+    </navPoint>
+    <navPoint id="navPoint-121" playOrder="121" class="chapter">
+      <navLabel>
+        <text>第119章 M的照片</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_118.html"/>
+    </navPoint>
+    <navPoint id="navPoint-122" playOrder="122" class="chapter">
+      <navLabel>
+        <text>第120章 大多数人的利益</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_119.html"/>
+    </navPoint>
+    <navPoint id="navPoint-123" playOrder="123" class="chapter">
+      <navLabel>
+        <text>第121章 回忆的缝</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_120.html"/>
+    </navPoint>
+    <navPoint id="navPoint-124" playOrder="124" class="chapter">
+      <navLabel>
+        <text>第122章 新生儿</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_121.html"/>
+    </navPoint>
+    <navPoint id="navPoint-125" playOrder="125" class="chapter">
+      <navLabel>
+        <text>第123章 交易</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_122.html"/>
+    </navPoint>
+    <navPoint id="navPoint-126" playOrder="126" class="chapter">
+      <navLabel>
+        <text>第124章 出口</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_123.html"/>
+    </navPoint>
+    <navPoint id="navPoint-127" playOrder="127" class="chapter">
+      <navLabel>
+        <text>第125章 又入狼穴</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_124.html"/>
+    </navPoint>
+    <navPoint id="navPoint-128" playOrder="128" class="chapter">
+      <navLabel>
+        <text>第126章 地下暗河</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_125.html"/>
+    </navPoint>
+    <navPoint id="navPoint-129" playOrder="129" class="chapter">
+      <navLabel>
+        <text>第127章 中间站</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_126.html"/>
+    </navPoint>
+    <navPoint id="navPoint-130" playOrder="130" class="chapter">
+      <navLabel>
+        <text>第128章 第六个人</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_127.html"/>
+    </navPoint>
+    <navPoint id="navPoint-131" playOrder="131" class="chapter">
+      <navLabel>
+        <text>第129章 失落的日记1</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_128.html"/>
+    </navPoint>
+    <navPoint id="navPoint-132" playOrder="132" class="chapter">
+      <navLabel>
+        <text>第130章 失落的日记2</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_129.html"/>
+    </navPoint>
+    <navPoint id="navPoint-133" playOrder="133" class="chapter">
+      <navLabel>
+        <text>第131章 雅典娜之死</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_130.html"/>
+    </navPoint>
+    <navPoint id="navPoint-134" playOrder="134" class="chapter">
+      <navLabel>
+        <text>第132章 交易</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_131.html"/>
+    </navPoint>
+    <navPoint id="navPoint-135" playOrder="135" class="chapter">
+      <navLabel>
+        <text>第133章 约翰</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_132.html"/>
+    </navPoint>
+    <navPoint id="navPoint-136" playOrder="136" class="chapter">
+      <navLabel>
+        <text>第134章 选择</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_133.html"/>
+    </navPoint>
+    <navPoint id="navPoint-137" playOrder="137" class="chapter">
+      <navLabel>
+        <text>第135章 张朋之死</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_134.html"/>
+    </navPoint>
+    <navPoint id="navPoint-138" playOrder="138" class="chapter">
+      <navLabel>
+        <text>第136章 爆炸</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_135.html"/>
+    </navPoint>
+    <navPoint id="navPoint-139" playOrder="139" class="chapter">
+      <navLabel>
+        <text>第137章 食罪人</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_136.html"/>
+    </navPoint>
+    <navPoint id="navPoint-140" playOrder="140" class="chapter">
+      <navLabel>
+        <text>第138章 重见天日</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_137.html"/>
+    </navPoint>
+    <navPoint id="navPoint-141" playOrder="141" class="chapter">
+      <navLabel>
+        <text>第139章 终章</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_138.html"/>
+    </navPoint>
+    <navPoint id="navPoint-142" playOrder="142" class="chapter">
+      <navLabel>
+        <text>第140章 9月11日</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_139.html"/>
+    </navPoint>
+    <navPoint id="navPoint-143" playOrder="143" class="chapter">
+      <navLabel>
+        <text>第141章 回家</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_140.html"/>
+    </navPoint>
+    <navPoint id="navPoint-144" playOrder="144" class="chapter">
+      <navLabel>
+        <text>第142章 好战</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_141.html"/>
+    </navPoint>
+    <navPoint id="navPoint-145" playOrder="145" class="chapter">
+      <navLabel>
+        <text>第143章 离开温蒂家乡菜</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_142.html"/>
+    </navPoint>
+    <navPoint id="navPoint-146" playOrder="146" class="chapter">
+      <navLabel>
+        <text>第144章 骆川的回忆</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_143.html"/>
+    </navPoint>
+    <navPoint id="navPoint-147" playOrder="147" class="chapter">
+      <navLabel>
+        <text>第145章 尼莫</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_144.html"/>
+    </navPoint>
+    <navPoint id="navPoint-148" playOrder="148" class="chapter">
+      <navLabel>
+        <text>第146章 考古的目的</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_145.html"/>
+    </navPoint>
+    <navPoint id="navPoint-149" playOrder="149" class="chapter">
+      <navLabel>
+        <text>第147章 暴雨</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_146.html"/>
+    </navPoint>
+    <navPoint id="navPoint-150" playOrder="150" class="chapter">
+      <navLabel>
+        <text>第148章 再入遗迹</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_147.html"/>
+    </navPoint>
+    <navPoint id="navPoint-151" playOrder="151" class="chapter">
+      <navLabel>
+        <text>第149章 石墙</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_148.html"/>
+    </navPoint>
+    <navPoint id="navPoint-152" playOrder="152" class="chapter">
+      <navLabel>
+        <text>第150章 薄雾</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_149.html"/>
+    </navPoint>
+    <navPoint id="navPoint-153" playOrder="153" class="chapter">
+      <navLabel>
+        <text>第151章 气泡</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_150.html"/>
+    </navPoint>
+    <navPoint id="navPoint-154" playOrder="154" class="chapter">
+      <navLabel>
+        <text>第152章 奇怪的声音</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_151.html"/>
+    </navPoint>
+    <navPoint id="navPoint-155" playOrder="155" class="chapter">
+      <navLabel>
+        <text>第153章 失而复得的科考队员</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_152.html"/>
+    </navPoint>
+    <navPoint id="navPoint-156" playOrder="156" class="chapter">
+      <navLabel>
+        <text>第154章 骆川之死</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_153.html"/>
+    </navPoint>
+    <navPoint id="navPoint-157" playOrder="157" class="chapter">
+      <navLabel>
+        <text>第155章 时轮经</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_154.html"/>
+    </navPoint>
+    <navPoint id="navPoint-158" playOrder="158" class="chapter">
+      <navLabel>
+        <text>第156章 夜宴</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_155.html"/>
+    </navPoint>
+    <navPoint id="navPoint-159" playOrder="159" class="chapter">
+      <navLabel>
+        <text>第157章 背后的力量</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_156.html"/>
+    </navPoint>
+    <navPoint id="navPoint-160" playOrder="160" class="chapter">
+      <navLabel>
+        <text>第158章 什么是永生？</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_157.html"/>
+    </navPoint>
+    <navPoint id="navPoint-161" playOrder="161" class="chapter">
+      <navLabel>
+        <text>第159章 犯人真的是唐老鸭</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_158.html"/>
+    </navPoint>
+    <navPoint id="navPoint-162" playOrder="162" class="chapter">
+      <navLabel>
+        <text>第160章 9月16日</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_159.html"/>
+    </navPoint>
+    <navPoint id="navPoint-163" playOrder="163" class="chapter">
+      <navLabel>
+        <text>第161章 表白</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_160.html"/>
+    </navPoint>
+    <navPoint id="navPoint-164" playOrder="164" class="chapter">
+      <navLabel>
+        <text>第162章 丽莎</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_161.html"/>
+    </navPoint>
+    <navPoint id="navPoint-165" playOrder="165" class="chapter">
+      <navLabel>
+        <text>第163章 无家可归者</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_162.html"/>
+    </navPoint>
+    <navPoint id="navPoint-166" playOrder="166" class="chapter">
+      <navLabel>
+        <text>第164章 新世界秩序</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_163.html"/>
+    </navPoint>
+    <navPoint id="navPoint-167" playOrder="167" class="chapter">
+      <navLabel>
+        <text>第165章 养生专家</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_164.html"/>
+    </navPoint>
+    <navPoint id="navPoint-168" playOrder="168" class="chapter">
+      <navLabel>
+        <text>第166章 《寄生兽》</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_165.html"/>
+    </navPoint>
+    <navPoint id="navPoint-169" playOrder="169" class="chapter">
+      <navLabel>
+        <text>第167章 七宗罪</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_166.html"/>
+    </navPoint>
+    <navPoint id="navPoint-170" playOrder="170" class="chapter">
+      <navLabel>
+        <text>第168章 9月18日</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_167.html"/>
+    </navPoint>
+    <navPoint id="navPoint-171" playOrder="171" class="chapter">
+      <navLabel>
+        <text>第169章 心灵导师</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_168.html"/>
+    </navPoint>
+    <navPoint id="navPoint-172" playOrder="172" class="chapter">
+      <navLabel>
+        <text>第170章 回到过去</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_169.html"/>
+    </navPoint>
+    <navPoint id="navPoint-173" playOrder="173" class="chapter">
+      <navLabel>
+        <text>第171章 二次催眠</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_170.html"/>
+    </navPoint>
+    <navPoint id="navPoint-174" playOrder="174" class="chapter">
+      <navLabel>
+        <text>第172章 怀疑</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_171.html"/>
+    </navPoint>
+    <navPoint id="navPoint-175" playOrder="175" class="chapter">
+      <navLabel>
+        <text>第173章 我是谁？</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_172.html"/>
+    </navPoint>
+    <navPoint id="navPoint-176" playOrder="176" class="chapter">
+      <navLabel>
+        <text>第174章 分离时刻</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_173.html"/>
+    </navPoint>
+    <navPoint id="navPoint-177" playOrder="177" class="chapter">
+      <navLabel>
+        <text>第175章 调包</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_174.html"/>
+    </navPoint>
+    <navPoint id="navPoint-178" playOrder="178" class="chapter">
+      <navLabel>
+        <text>第176章 推理</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_175.html"/>
+    </navPoint>
+    <navPoint id="navPoint-179" playOrder="179" class="chapter">
+      <navLabel>
+        <text>第177章 幽灵人生</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_176.html"/>
+    </navPoint>
+    <navPoint id="navPoint-180" playOrder="180" class="chapter">
+      <navLabel>
+        <text>第178章 艾琳</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_177.html"/>
+    </navPoint>
+    <navPoint id="navPoint-181" playOrder="181" class="chapter">
+      <navLabel>
+        <text>第179章 隐藏信息</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_178.html"/>
+    </navPoint>
+    <navPoint id="navPoint-182" playOrder="182" class="chapter">
+      <navLabel>
+        <text>第180章 仙乐都</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_179.html"/>
+    </navPoint>
+    <navPoint id="navPoint-183" playOrder="183" class="chapter">
+      <navLabel>
+        <text>第181章 亚伯</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_180.html"/>
+    </navPoint>
+    <navPoint id="navPoint-184" playOrder="184" class="chapter">
+      <navLabel>
+        <text>第182章 爷爷</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_181.html"/>
+    </navPoint>
+    <navPoint id="navPoint-185" playOrder="185" class="chapter">
+      <navLabel>
+        <text>第183章 接生</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_182.html"/>
+    </navPoint>
+    <navPoint id="navPoint-186" playOrder="186" class="chapter">
+      <navLabel>
+        <text>第184章 看到过去的能力</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_183.html"/>
+    </navPoint>
+    <navPoint id="navPoint-187" playOrder="187" class="chapter">
+      <navLabel>
+        <text>第185章 祝祷会</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_184.html"/>
+    </navPoint>
+    <navPoint id="navPoint-188" playOrder="188" class="chapter">
+      <navLabel>
+        <text>第186章 上帝之城</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_185.html"/>
+    </navPoint>
+    <navPoint id="navPoint-189" playOrder="189" class="chapter">
+      <navLabel>
+        <text>第187章 灰狗之旅</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_186.html"/>
+    </navPoint>
+    <navPoint id="navPoint-190" playOrder="190" class="chapter">
+      <navLabel>
+        <text>第188章 受洗</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_187.html"/>
+    </navPoint>
+    <navPoint id="navPoint-191" playOrder="191" class="chapter">
+      <navLabel>
+        <text>第189章 卡森城的废气游乐园</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_188.html"/>
+    </navPoint>
+    <navPoint id="navPoint-192" playOrder="192" class="chapter">
+      <navLabel>
+        <text>第190章 狂怒／好战</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_189.html"/>
+    </navPoint>
+    <navPoint id="navPoint-193" playOrder="193" class="chapter">
+      <navLabel>
+        <text>第191章 色欲</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_190.html"/>
+    </navPoint>
+    <navPoint id="navPoint-194" playOrder="194" class="chapter">
+      <navLabel>
+        <text>第192章 盲从</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_191.html"/>
+    </navPoint>
+    <navPoint id="navPoint-195" playOrder="195" class="chapter">
+      <navLabel>
+        <text>第193章 冷漠</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_192.html"/>
+    </navPoint>
+    <navPoint id="navPoint-196" playOrder="196" class="chapter">
+      <navLabel>
+        <text>第194章 自大</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_193.html"/>
+    </navPoint>
+    <navPoint id="navPoint-197" playOrder="197" class="chapter">
+      <navLabel>
+        <text>第195章 贪婪</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_194.html"/>
+    </navPoint>
+    <navPoint id="navPoint-198" playOrder="198" class="chapter">
+      <navLabel>
+        <text>第196章 藏在羊群的狼</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_195.html"/>
+    </navPoint>
+    <navPoint id="navPoint-199" playOrder="199" class="chapter">
+      <navLabel>
+        <text>第197章 头痛</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_196.html"/>
+    </navPoint>
+    <navPoint id="navPoint-200" playOrder="200" class="chapter">
+      <navLabel>
+        <text>第198章 好战</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_197.html"/>
+    </navPoint>
+    <navPoint id="navPoint-201" playOrder="201" class="chapter">
+      <navLabel>
+        <text>第199章 重生</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_198.html"/>
+    </navPoint>
+    <navPoint id="navPoint-202" playOrder="202" class="chapter">
+      <navLabel>
+        <text>第200章 通感</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_199.html"/>
+    </navPoint>
+    <navPoint id="navPoint-203" playOrder="203" class="chapter">
+      <navLabel>
+        <text>第201章 计划启动</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_200.html"/>
+    </navPoint>
+    <navPoint id="navPoint-204" playOrder="204" class="chapter">
+      <navLabel>
+        <text>第202章 救世主降临</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_201.html"/>
+    </navPoint>
+    <navPoint id="navPoint-205" playOrder="205" class="chapter">
+      <navLabel>
+        <text>第203章 神的羔羊</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_202.html"/>
+    </navPoint>
+    <navPoint id="navPoint-206" playOrder="206" class="chapter">
+      <navLabel>
+        <text>第204章 重新成为朋友吧</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_203.html"/>
+    </navPoint>
+    <navPoint id="navPoint-207" playOrder="207" class="chapter">
+      <navLabel>
+        <text>第205章 重逢</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_204.html"/>
+    </navPoint>
+    <navPoint id="navPoint-208" playOrder="208" class="chapter">
+      <navLabel>
+        <text>第206章 罪恶之都</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_205.html"/>
+    </navPoint>
+    <navPoint id="navPoint-209" playOrder="209" class="chapter">
+      <navLabel>
+        <text>第207章 破釜沉舟</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_206.html"/>
+    </navPoint>
+    <navPoint id="navPoint-210" playOrder="210" class="chapter">
+      <navLabel>
+        <text>第208章 螳螂捕蝉</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_207.html"/>
+    </navPoint>
+    <navPoint id="navPoint-211" playOrder="211" class="chapter">
+      <navLabel>
+        <text>第209章 最友善的罪犯</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_208.html"/>
+    </navPoint>
+    <navPoint id="navPoint-212" playOrder="212" class="chapter">
+      <navLabel>
+        <text>第210章 闪灵</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_209.html"/>
+    </navPoint>
+    <navPoint id="navPoint-213" playOrder="213" class="chapter">
+      <navLabel>
+        <text>第211章 突变</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_210.html"/>
+    </navPoint>
+    <navPoint id="navPoint-214" playOrder="214" class="chapter">
+      <navLabel>
+        <text>第212章 蓄水池</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_211.html"/>
+    </navPoint>
+    <navPoint id="navPoint-215" playOrder="215" class="chapter">
+      <navLabel>
+        <text>第213章 抢夺汪旺旺</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_212.html"/>
+    </navPoint>
+    <navPoint id="navPoint-216" playOrder="216" class="chapter">
+      <navLabel>
+        <text>第214章 0.00001%的差别</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_213.html"/>
+    </navPoint>
+    <navPoint id="navPoint-217" playOrder="217" class="chapter">
+      <navLabel>
+        <text>第215章 思维方式的不同</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_214.html"/>
+    </navPoint>
+    <navPoint id="navPoint-218" playOrder="218" class="chapter">
+      <navLabel>
+        <text>第216章 一个吻</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_215.html"/>
+    </navPoint>
+    <navPoint id="navPoint-219" playOrder="219" class="chapter">
+      <navLabel>
+        <text>第217章 抵达大湖</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_216.html"/>
+    </navPoint>
+    <navPoint id="navPoint-220" playOrder="220" class="chapter">
+      <navLabel>
+        <text>第218章 浓雾中的冰湖</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_217.html"/>
+    </navPoint>
+    <navPoint id="navPoint-221" playOrder="221" class="chapter">
+      <navLabel>
+        <text>第219章 无法典当的项链</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_218.html"/>
+    </navPoint>
+    <navPoint id="navPoint-222" playOrder="222" class="chapter">
+      <navLabel>
+        <text>第220章 智能备</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_219.html"/>
+    </navPoint>
+    <navPoint id="navPoint-223" playOrder="223" class="chapter">
+      <navLabel>
+        <text>第221章 用间之术</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_220.html"/>
+    </navPoint>
+    <navPoint id="navPoint-224" playOrder="224" class="chapter">
+      <navLabel>
+        <text>第222章 忍者的奥义</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_221.html"/>
+    </navPoint>
+    <navPoint id="navPoint-225" playOrder="225" class="chapter">
+      <navLabel>
+        <text>第223章 先救你自己</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_222.html"/>
+    </navPoint>
+    <navPoint id="navPoint-226" playOrder="226" class="chapter">
+      <navLabel>
+        <text>第224章 荒原屠夫</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_223.html"/>
+    </navPoint>
+    <navPoint id="navPoint-227" playOrder="227" class="chapter">
+      <navLabel>
+        <text>第225章 做个交易</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_224.html"/>
+    </navPoint>
+    <navPoint id="navPoint-228" playOrder="228" class="chapter">
+      <navLabel>
+        <text>第226章 半藏中毒</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_225.html"/>
+    </navPoint>
+    <navPoint id="navPoint-229" playOrder="229" class="chapter">
+      <navLabel>
+        <text>第227章 从仙乐都逃出来的女人</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_226.html"/>
+    </navPoint>
+    <navPoint id="navPoint-230" playOrder="230" class="chapter">
+      <navLabel>
+        <text>第228章 以撒的妈妈</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_227.html"/>
+    </navPoint>
+    <navPoint id="navPoint-231" playOrder="231" class="chapter">
+      <navLabel>
+        <text>第229章 核电站的猫腻</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_228.html"/>
+    </navPoint>
+    <navPoint id="navPoint-232" playOrder="232" class="chapter">
+      <navLabel>
+        <text>第230章 奇怪的核弹坑</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_229.html"/>
+    </navPoint>
+    <navPoint id="navPoint-233" playOrder="233" class="chapter">
+      <navLabel>
+        <text>第231章 优秀的演员</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_230.html"/>
+    </navPoint>
+    <navPoint id="navPoint-234" playOrder="234" class="chapter">
+      <navLabel>
+        <text>第232章 水管里的声音</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_231.html"/>
+    </navPoint>
+    <navPoint id="navPoint-235" playOrder="235" class="chapter">
+      <navLabel>
+        <text>第233章 地牢</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_232.html"/>
+    </navPoint>
+    <navPoint id="navPoint-236" playOrder="236" class="chapter">
+      <navLabel>
+        <text>第234章 神魔之战</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_233.html"/>
+    </navPoint>
+    <navPoint id="navPoint-237" playOrder="237" class="chapter">
+      <navLabel>
+        <text>第235章 断臂</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_234.html"/>
+    </navPoint>
+    <navPoint id="navPoint-238" playOrder="238" class="chapter">
+      <navLabel>
+        <text>第236章 通往地狱</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_235.html"/>
+    </navPoint>
+    <navPoint id="navPoint-239" playOrder="239" class="chapter">
+      <navLabel>
+        <text>第237章 湖底洞穴</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_236.html"/>
+    </navPoint>
+    <navPoint id="navPoint-240" playOrder="240" class="chapter">
+      <navLabel>
+        <text>第238章 苏珊娜</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_237.html"/>
+    </navPoint>
+    <navPoint id="navPoint-241" playOrder="241" class="chapter">
+      <navLabel>
+        <text>第239章 重遇</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_238.html"/>
+    </navPoint>
+    <navPoint id="navPoint-242" playOrder="242" class="chapter">
+      <navLabel>
+        <text>第240章 兄妹</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_239.html"/>
+    </navPoint>
+    <navPoint id="navPoint-243" playOrder="243" class="chapter">
+      <navLabel>
+        <text>第241章 人的对立面</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_240.html"/>
+    </navPoint>
+    <navPoint id="navPoint-244" playOrder="244" class="chapter">
+      <navLabel>
+        <text>第242章 反骨</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_241.html"/>
+    </navPoint>
+    <navPoint id="navPoint-245" playOrder="245" class="chapter">
+      <navLabel>
+        <text>第243章 银质链坠</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_242.html"/>
+    </navPoint>
+    <navPoint id="navPoint-246" playOrder="246" class="chapter">
+      <navLabel>
+        <text>第244章 提前孵化</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_243.html"/>
+    </navPoint>
+    <navPoint id="navPoint-247" playOrder="247" class="chapter">
+      <navLabel>
+        <text>第245章 最后的仪式</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_244.html"/>
+    </navPoint>
+    <navPoint id="navPoint-248" playOrder="248" class="chapter">
+      <navLabel>
+        <text>第246章 锁眼的计算</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_245.html"/>
+    </navPoint>
+    <navPoint id="navPoint-249" playOrder="249" class="chapter">
+      <navLabel>
+        <text>第247章 血统的源头</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_246.html"/>
+    </navPoint>
+    <navPoint id="navPoint-250" playOrder="250" class="chapter">
+      <navLabel>
+        <text>第248章 进化vs退化</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_247.html"/>
+    </navPoint>
+    <navPoint id="navPoint-251" playOrder="251" class="chapter">
+      <navLabel>
+        <text>第249章 插入钥匙</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_248.html"/>
+    </navPoint>
+    <navPoint id="navPoint-252" playOrder="252" class="chapter">
+      <navLabel>
+        <text>第250章 通往气泡世界</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_249.html"/>
+    </navPoint>
+    <navPoint id="navPoint-253" playOrder="253" class="chapter">
+      <navLabel>
+        <text>第251章 万神之神</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_250.html"/>
+    </navPoint>
+    <navPoint id="navPoint-254" playOrder="254" class="chapter">
+      <navLabel>
+        <text>第252章 尸堆中的声音</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_251.html"/>
+    </navPoint>
+    <navPoint id="navPoint-255" playOrder="255" class="chapter">
+      <navLabel>
+        <text>第253章 撞车</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_252.html"/>
+    </navPoint>
+    <navPoint id="navPoint-256" playOrder="256" class="chapter">
+      <navLabel>
+        <text>第254章 昨日重现</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_253.html"/>
+    </navPoint>
+    <navPoint id="navPoint-257" playOrder="257" class="chapter">
+      <navLabel>
+        <text>第255章 第三批人</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_254.html"/>
+    </navPoint>
+    <navPoint id="navPoint-258" playOrder="258" class="chapter">
+      <navLabel>
+        <text>第256章 愿望</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_255.html"/>
+    </navPoint>
+    <navPoint id="navPoint-259" playOrder="259" class="chapter">
+      <navLabel>
+        <text>第257章 还有别人</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_256.html"/>
+    </navPoint>
+    <navPoint id="navPoint-260" playOrder="260" class="chapter">
+      <navLabel>
+        <text>第258章 第7个人</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_257.html"/>
+    </navPoint>
+    <navPoint id="navPoint-261" playOrder="261" class="chapter">
+      <navLabel>
+        <text>第259章 冯.罗德菲尔德</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_258.html"/>
+    </navPoint>
+    <navPoint id="navPoint-262" playOrder="262" class="chapter">
+      <navLabel>
+        <text>第260章 终点</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_259.html"/>
+    </navPoint>
+    <navPoint id="navPoint-263" playOrder="263" class="chapter">
+      <navLabel>
+        <text>第261章 许愿</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_260.html"/>
+    </navPoint>
+    <navPoint id="navPoint-264" playOrder="264" class="chapter">
+      <navLabel>
+        <text>第262章 最重要的东西</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_261.html"/>
+    </navPoint>
+    <navPoint id="navPoint-265" playOrder="265" class="chapter">
+      <navLabel>
+        <text>第263章 不要认输</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_262.html"/>
+    </navPoint>
+    <navPoint id="navPoint-266" playOrder="266" class="chapter">
+      <navLabel>
+        <text>第264章 沙耶加的能力</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_263.html"/>
+    </navPoint>
+    <navPoint id="navPoint-267" playOrder="267" class="chapter">
+      <navLabel>
+        <text>第265章 向导</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_264.html"/>
+    </navPoint>
+    <navPoint id="navPoint-268" playOrder="268" class="chapter">
+      <navLabel>
+        <text>第266章 再见汪旺旺</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_265.html"/>
+    </navPoint>
+    <navPoint id="navPoint-269" playOrder="269" class="chapter">
+      <navLabel>
+        <text>第267章 疯兔子受伤</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_266.html"/>
+    </navPoint>
+    <navPoint id="navPoint-270" playOrder="270" class="chapter">
+      <navLabel>
+        <text>第268章 末日审判（1）</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_267.html"/>
+    </navPoint>
+    <navPoint id="navPoint-271" playOrder="271" class="chapter">
+      <navLabel>
+        <text>第269章 末日审判（2）</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_268.html"/>
+    </navPoint>
+    <navPoint id="navPoint-272" playOrder="272" class="chapter">
+      <navLabel>
+        <text>第270章 末日审判（3）</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_269.html"/>
+    </navPoint>
+    <navPoint id="navPoint-273" playOrder="273" class="chapter">
+      <navLabel>
+        <text>第271章 发射中心</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_270.html"/>
+    </navPoint>
+    <navPoint id="navPoint-274" playOrder="274" class="chapter">
+      <navLabel>
+        <text>第272章 回到最初</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_271.html"/>
+    </navPoint>
+    <navPoint id="navPoint-275" playOrder="275" class="chapter">
+      <navLabel>
+        <text>第273章 小鸭子</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_272.html"/>
+    </navPoint>
+    <navPoint id="navPoint-276" playOrder="276" class="chapter">
+      <navLabel>
+        <text>第274章 张朋的秘密</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_273.html"/>
+    </navPoint>
+    <navPoint id="navPoint-277" playOrder="277" class="chapter">
+      <navLabel>
+        <text>第275章 狂热的教徒</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_274.html"/>
+    </navPoint>
+    <navPoint id="navPoint-278" playOrder="278" class="chapter">
+      <navLabel>
+        <text>第276章 堕落的信仰</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_275.html"/>
+    </navPoint>
+    <navPoint id="navPoint-279" playOrder="279" class="chapter">
+      <navLabel>
+        <text>第277章 最后的陪伴</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_276.html"/>
+    </navPoint>
+    <navPoint id="navPoint-280" playOrder="280" class="chapter">
+      <navLabel>
+        <text>第278章 尾声</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_277.html"/>
+    </navPoint>
+    <navPoint id="navPoint-281" playOrder="281" class="chapter">
+      <navLabel>
+        <text>第279章 尾声2</text>
+      </navLabel>
+      <content src="├╗╙╨├√╫╓╡─╚╦.epub/OEBPS/Text/chapter_278.html"/>
+    </navPoint>
+  </navMap>
+</ncx>
