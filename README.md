@@ -18,6 +18,33 @@ docker compose up -d --build
 
 > 首次运行需要创建数据目录（`input/`、`meta/`、`output/`、`template/`、`fonts/`）；Docker Compose 会自动创建挂载目录，也可以手动 `mkdir -p input meta fonts output template`。
 
+### 完整 docker-compose.yml（可复制）
+
+项目根目录自带 `docker-compose.yml`，内容如下，所有目录都是宿主机挂载：
+
+```yaml
+services:
+  epub-converter:
+    build: .
+    image: wyjh/epub-converter:latest
+    container_name: epub-converter
+    restart: unless-stopped
+    environment:
+      WATCH_INTERVAL: "15"          # 扫描间隔（秒）
+      FORCE_RECONVERT: "0"          # 设为 1 强制全部重新转换
+      # FONT_FILE: "PingFangSC-Medium.ttf"   # 指定嵌入字体（fonts/ 目录内文件名）
+      # COVER_WIDTH: "600"                   # 自定义封面宽度（0/留空 = 模板默认 440）
+      # COVER_HEIGHT: "800"                  # 自定义封面高度（0/留空 = 模板默认 578）
+    ports:
+      - "8080:8080"                 # Web 管理界面
+    volumes:
+      - ./input:/input              # 待转换 TXT + 封面
+      - ./meta:/meta                # 同名元信息文件
+      - ./fonts:/fonts              # 字体目录：放入任意 .ttf/.otf/.ttc 自动识别，可覆盖镜像内置字体
+      - ./output:/output            # 转换结果 + 日志
+      - ./template:/template        # 固化模板（可放 sample.epub 自动提取）
+```
+
 ---
 
 ## 功能特性
@@ -38,7 +65,7 @@ docker compose up -d --build
 
 ---
 
-## 快速开始（Docker Compose，推荐）
+## Docker Compose 详解
 
 ### 环境要求
 
@@ -96,7 +123,9 @@ docker pull wyjh/epub-converter:latest
 docker run -d --name epub-converter --restart unless-stopped \
   -v "$PWD/input:/input" \
   -v "$PWD/meta:/meta" \
+  -v "$PWD/fonts:/fonts" \
   -v "$PWD/output:/output" \
+  -v "$PWD/template:/template" \
   -p 8080:8080 \
   wyjh/epub-converter:latest
 ```
