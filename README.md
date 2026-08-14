@@ -2,9 +2,19 @@
 
 把任意 TXT 小说批量转换成**排版与参考样例完全一致**的标准 EPUB，可直接导入 Calibre 书库、推送 Kindle。
 
-转换引擎底层使用 calibre `ebook-convert`，所有样式参数不是程序“临时调整”出来的，而是从参考样例 EPUB 中**提取并固化**的模板，任何新书都强制复用同一套模板，杜绝样式漂移。
+所有样式参数不是程序“临时调整”出来的，而是从参考样例 EPUB 中**提取并固化**的模板，任何新书都强制复用同一套模板，杜绝样式漂移。转换引擎默认使用内置的**直接打包模式**（与样例排版 1:1，无需额外依赖）；也可以选择内置 calibre（构建时加 `--build-arg INSTALL_CALIBRE=1`）走 `ebook-convert` 引擎。
 
 自带 **Web 管理界面**：批量导入 TXT、多源刮削元信息（书名/作者/简介/封面）、在线编辑、一键转换、下载成品、实时日志，全程网页操作。
+
+---
+
+## 快速开始（3 条命令）
+
+```bash
+mkdir -p input meta fonts output template   # 创建数据目录（可选）
+docker compose up -d --build                # 构建并后台启动
+# 打开 http://localhost:8080 使用 Web 界面
+```
 
 ---
 
@@ -31,7 +41,7 @@
 ### 环境要求
 
 - Docker Engine 20.10+（含 `docker compose` 插件）
-- 能访问外网（构建镜像需安装 calibre 与 Python 依赖）
+- 能访问外网（构建镜像需安装 Python 依赖；默认不内置 calibre，构建很快）
 
 ### 步骤
 

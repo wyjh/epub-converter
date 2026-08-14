@@ -4,10 +4,15 @@ ENV DEBIAN_FRONTEND=noninteractive \
     PYTHONUNBUFFERED=1 \
     PIP_NO_CACHE_DIR=1
 
-# 内置 headless calibre（含 ebook-convert）
-RUN apt-get update \
-    && apt-get install -y calibre \
-    && rm -rf /var/lib/apt/lists/*
+# 是否内置 calibre（ebook-convert）。
+# 默认不安装（构建快、镜像小）：转换会自动使用内置“直接打包模式”，
+# 排版与样例 1:1；需要 calibre 时构建加 --build-arg INSTALL_CALIBRE=1。
+ARG INSTALL_CALIBRE=0
+RUN if [ "$INSTALL_CALIBRE" = "1" ]; then \
+      apt-get update \
+      && apt-get install -y calibre \
+      && rm -rf /var/lib/apt/lists/*; \
+    fi
 
 COPY requirements.txt /tmp/requirements.txt
 RUN pip install --no-cache-dir -r /tmp/requirements.txt
