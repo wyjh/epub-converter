@@ -25,8 +25,10 @@ EXPOSE 8080
 RUN mkdir -p /input /meta /output /work /logs \
     && chmod +x /app/entrypoint.sh
 
-# 宿主机目录挂载点
-VOLUME ["/input", "/meta", "/fonts", "/output", "/template"]
+# 运行时数据目录挂载点
+# 注意：/template 与 /fonts 不能声明为 VOLUME，否则镜像内 COPY 的
+# 默认模板/字体会被空匿名卷隐藏，导致容器启动时找不到 template.yml。
+VOLUME ["/input", "/meta", "/output", "/work", "/logs"]
 
 ENTRYPOINT ["/app/entrypoint.sh"]
 CMD ["web"]

@@ -113,6 +113,8 @@ docker compose exec epub-converter watch
 | `./output` | `/output` | 转换结果 + 运行日志 |
 | `./template` | `/template` | 固化模板；可放入 `sample.epub` 自动提取 |
 
+> 镜像已内置默认模板与苹方字体，**不挂载也能直接运行**；挂载 `template/`、`fonts/` 用于自定义覆盖。
+
 ## 手动运行（Docker run）
 
 ```bash
