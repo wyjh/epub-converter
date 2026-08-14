@@ -1,7 +1,7 @@
 services:
   epub-converter:
     build: .
-    image: epub-converter:latest
+    image: wyjh/epub-converter:latest
     container_name: epub-converter
     restart: unless-stopped
     environment:

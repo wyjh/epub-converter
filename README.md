@@ -76,6 +76,21 @@ docker compose exec epub-converter watch
 
 > 容器默认启动 Web 界面；`input/`、`meta/`、`output/`、`template/`、`fonts/` 都是宿主机目录直接挂载，重启容器数据不丢失。
 
+### 从 Docker Hub 拉取（无需本地构建）
+
+```bash
+docker pull wyjh/epub-converter:latest
+
+docker run -d --name epub-converter --restart unless-stopped \
+  -v "$PWD/input:/input" \
+  -v "$PWD/meta:/meta" \
+  -v "$PWD/output:/output" \
+  -p 8080:8080 \
+  wyjh/epub-converter:latest
+```
+
+镜像默认内置模板与苹方字体，直接跑即可；自定义字体/模板时挂载 `fonts/`、`template/` 目录覆盖。
+
 ---
 
 ## 使用指南（Web 界面）
@@ -120,7 +135,7 @@ docker compose exec epub-converter watch
 ## 手动运行（Docker run）
 
 ```bash
-docker build -t epub-converter:latest .
+docker build -t wyjh/epub-converter:latest .
 
 docker run -d --name epub-converter --restart unless-stopped \
   -v "$PWD/input:/input" \
@@ -130,7 +145,7 @@ docker run -d --name epub-converter --restart unless-stopped \
   -v "$PWD/template:/template" \
   -p 8080:8080 \
   -e WATCH_INTERVAL=15 \
-  epub-converter:latest
+  wyjh/epub-converter:latest
 ```
 
 ## 手动触发转换（不进入监控）
