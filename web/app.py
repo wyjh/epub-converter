@@ -174,6 +174,7 @@ def settings_get():
         "cover_default": f"{template.cover.width}x{template.cover.height}",
         "font_file": settings.font_file,
         "fonts": list_font_files(settings.fonts_dir),
+        "fonts_dir": str(settings.fonts_dir),
     })
 
 

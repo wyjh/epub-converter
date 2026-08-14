@@ -114,7 +114,7 @@
         </div>
         <div class="status" id="settings-status"></div>
         <div class="hint">封面分辨率默认 440×578（与模板一致），可自定义，封面会按新尺寸居中裁切生成。
-          字体选项来自 /fonts 目录，放入 .ttf / .otf / .ttc 文件后刷新页面即可出现。</div>
+          字体选项来自 <span id="s-fonts-dir">/fonts</span> 目录，放入 .ttf / .otf / .ttc 文件后刷新页面即可出现。</div>
       </div>
 
       <div class="card" id="editor-card" style="display:none">
@@ -295,9 +295,13 @@ async function loadSettings() {
   if (!d.ok) return;
   $("s-cover-w").value = d.cover_width || "";
   $("s-cover-h").value = d.cover_height || "";
+  if (d.fonts_dir) $("s-fonts-dir").textContent = d.fonts_dir;
   const sel = $("s-font");
   sel.innerHTML = '<option value="">默认（PingFangSC-Light）</option>' +
     (d.fonts || []).map(f => '<option value="' + esc(f) + '">' + esc(f) + "</option>").join("");
+  if (!(d.fonts || []).length) {
+    sel.innerHTML += '<option value="">（fonts 目录为空，放入字体后刷新）</option>';
+  }
   sel.value = d.font_file || "";
 }
 
