@@ -13,7 +13,7 @@ fonts:
   - family: PingFang SC
     weight: '300'
     sample_file: PingFang-SC-Light.otf
-    provided_file: PingFang-SC-Light.otf
+    provided_file: PingFangSC-Light.ttf
   css_files:
   - stylesheet.css
   - page_styles.css

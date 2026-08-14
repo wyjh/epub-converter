@@ -216,7 +216,7 @@ fonts:
       provided_file: PingFangSC-Light.ttf
 ```
 
-转换时程序只替换 `@font-face` 的 `src` 指向实际嵌入的字体文件，其余 CSS 逐字保留。字体选择优先级：**Web“转换设置”指定的字体 / `FONT_FILE` 环境变量 > 模板映射的字体 > `fonts/` 目录里任意字体**。
+默认嵌入 **PingFangSC-Light**（苹方细体）。转换时程序只替换 `@font-face` 的 `src` 指向实际嵌入的字体文件，其余 CSS 逐字保留。字体选择优先级：**Web“转换设置”指定的字体 / `FONT_FILE` 环境变量 > 模板默认（PingFangSC-Light）> `fonts/` 目录里自动探测的字体**。
 
 > 苹方字体体积大且受版权保护，本仓库不包含字体文件。镜像内置一份默认字体；想用其他字体，把文件放进 `fonts/`（挂载目录）即可，无需改代码。
 

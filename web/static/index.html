@@ -105,9 +105,9 @@
           <div><label>封面宽度（px）</label><input type="number" id="s-cover-w" min="1" max="4000" placeholder="440"/></div>
           <div><label>封面高度（px）</label><input type="number" id="s-cover-h" min="1" max="4000" placeholder="578"/></div>
         </div>
-        <label>嵌入字体 <span class="muted">（默认使用模板字体）</span></label>
+        <label>嵌入字体 <span class="muted">（默认 PingFangSC-Light）</span></label>
         <select id="s-font">
-          <option value="">默认（模板）</option>
+          <option value="">默认（PingFangSC-Light）</option>
         </select>
         <div style="margin-top:12px">
           <button class="btn btn-primary" id="btn-save-settings">保存设置</button>
@@ -296,7 +296,7 @@ async function loadSettings() {
   $("s-cover-w").value = d.cover_width || "";
   $("s-cover-h").value = d.cover_height || "";
   const sel = $("s-font");
-  sel.innerHTML = '<option value="">默认（模板）</option>' +
+  sel.innerHTML = '<option value="">默认（PingFangSC-Light）</option>' +
     (d.fonts || []).map(f => '<option value="' + esc(f) + '">' + esc(f) + "</option>").join("");
   sel.value = d.font_file || "";
 }

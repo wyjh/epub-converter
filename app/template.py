@@ -106,7 +106,9 @@ class Template:
         # 3) fonts 目录里任意字体文件（自动探测，方便直接放字体）
         files = list_font_files(settings.fonts_dir)
         if files:
-            return Path(settings.fonts_dir) / files[0]
+            # 优先选择 Light 字重（与默认字体 PingFangSC-Light 一致）
+            light = [f for f in files if "light" in f.lower()]
+            return Path(settings.fonts_dir) / (light[0] if light else files[0])
         return None
 
 
