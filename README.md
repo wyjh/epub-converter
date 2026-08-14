@@ -26,7 +26,7 @@ docker compose up -d --build
 services:
   epub-converter:
     build: .
-    image: wyjh/epub-converter:latest
+    image: liangjh6960/epub-converter:latest
     container_name: epub-converter
     restart: unless-stopped
     environment:
@@ -118,7 +118,7 @@ docker compose exec epub-converter watch
 ### 从 Docker Hub 拉取（无需本地构建）
 
 ```bash
-docker pull wyjh/epub-converter:latest
+docker pull liangjh6960/epub-converter:latest
 
 docker run -d --name epub-converter --restart unless-stopped \
   -v "$PWD/input:/input" \
@@ -127,7 +127,7 @@ docker run -d --name epub-converter --restart unless-stopped \
   -v "$PWD/output:/output" \
   -v "$PWD/template:/template" \
   -p 8080:8080 \
-  wyjh/epub-converter:latest
+  liangjh6960/epub-converter:latest
 ```
 
 镜像默认内置模板与苹方字体，直接跑即可；自定义字体/模板时挂载 `fonts/`、`template/` 目录覆盖。
@@ -176,7 +176,7 @@ docker run -d --name epub-converter --restart unless-stopped \
 ## 手动运行（Docker run）
 
 ```bash
-docker build -t wyjh/epub-converter:latest .
+docker build -t liangjh6960/epub-converter:latest .
 
 docker run -d --name epub-converter --restart unless-stopped \
   -v "$PWD/input:/input" \
@@ -186,7 +186,7 @@ docker run -d --name epub-converter --restart unless-stopped \
   -v "$PWD/template:/template" \
   -p 8080:8080 \
   -e WATCH_INTERVAL=15 \
-  wyjh/epub-converter:latest
+  liangjh6960/epub-converter:latest
 ```
 
 ## 手动触发转换（不进入监控）
