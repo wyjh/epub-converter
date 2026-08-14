@@ -8,13 +8,15 @@
 
 ---
 
-## 快速开始（3 条命令）
+## 快速开始
 
 ```bash
-mkdir -p input meta fonts output template   # 创建数据目录（可选）
-docker compose up -d --build                # 构建并后台启动
-# 打开 http://localhost:8080 使用 Web 界面
+docker compose up -d --build
 ```
+
+复制上面这一条命令即可构建并启动，然后打开 **http://localhost:8080** 使用 Web 界面。
+
+> 首次运行需要创建数据目录（`input/`、`meta/`、`output/`、`template/`、`fonts/`）；Docker Compose 会自动创建挂载目录，也可以手动 `mkdir -p input meta fonts output template`。
 
 ---
 
