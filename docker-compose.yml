@@ -7,11 +7,14 @@ services:
     environment:
       WATCH_INTERVAL: "15"          # 扫描间隔（秒）
       FORCE_RECONVERT: "0"          # 设为 1 强制全部重新转换
+      # FONT_FILE: "PingFangSC-Medium.ttf"   # 指定嵌入字体（fonts/ 目录内文件名）
+      # COVER_WIDTH: "600"                   # 自定义封面宽度（0/留空 = 模板默认 440）
+      # COVER_HEIGHT: "800"                  # 自定义封面高度（0/留空 = 模板默认 578）
     ports:
       - "8080:8080"                 # Web 管理界面
     volumes:
       - ./input:/input              # 待转换 TXT + 封面
       - ./meta:/meta                # 同名元信息文件
-      - ./fonts:/fonts              # 苹方字体（可覆盖镜像内置字体）
+      - ./fonts:/fonts              # 字体目录：放入任意 .ttf/.otf/.ttc 自动识别，可覆盖镜像内置字体
       - ./output:/output            # 转换结果 + 日志
       - ./template:/template        # 固化模板（可放 sample.epub 自动提取）

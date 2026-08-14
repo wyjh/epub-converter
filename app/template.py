@@ -92,6 +92,23 @@ class Template:
                 return f
         return None
 
+    def resolve_font_file(self, font: FontSpec, settings) -> Optional[Path]:
+        """确定实际嵌入的字体文件：Web/环境指定 > 模板映射 > fonts 目录自动探测。"""
+        # 1) 用户显式指定
+        if getattr(settings, "font_file", ""):
+            cand = Path(settings.fonts_dir) / settings.font_file
+            if cand.is_file():
+                return cand
+        # 2) 模板 provided_file
+        src = self.provided_font_file(font, settings.fonts_dir)
+        if src is not None:
+            return src
+        # 3) fonts 目录里任意字体文件（自动探测，方便直接放字体）
+        files = list_font_files(settings.fonts_dir)
+        if files:
+            return Path(settings.fonts_dir) / files[0]
+        return None
+
 
 def _load_yaml(path: Path) -> dict:
     try:
@@ -112,6 +129,30 @@ def load_template(template_dir: Path) -> Template:
     data = _load_yaml(yml)
     css = data.get("fonts", {}).get("css_files") or ["stylesheet.css", "page_styles1.css"]
     return Template(path=template_dir, data=data, css_files=list(css))
+
+
+def list_font_files(fonts_dir: Path) -> list:
+    """列出 fonts 目录下可用的字体文件。"""
+    if not fonts_dir.is_dir():
+        return []
+    exts = (".ttf", ".otf", ".ttc")
+    return sorted(
+        p.name for p in fonts_dir.iterdir()
+        if p.is_file() and p.suffix.lower() in exts
+    )
+
+
+def effective_cover(template: Template, settings) -> CoverSpec:
+    """封面规格：设置了 COVER_WIDTH/COVER_HEIGHT 或 Web 自定义时用它，否则用模板默认。"""
+    spec = template.cover
+    w = int(getattr(settings, "cover_width", 0) or 0)
+    h = int(getattr(settings, "cover_height", 0) or 0)
+    if w > 0 and h > 0:
+        return CoverSpec(
+            width=w, height=h,
+            quality=spec.quality, fmt=spec.fmt, color_mode=spec.color_mode,
+        )
+    return spec
 
 
 def build_working_css(template: Template, fonts_dir: Path, dest: Path) -> None:

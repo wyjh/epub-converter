@@ -28,7 +28,10 @@ def verify_epub(
     template: Template,
     meta: Meta,
     chapter_count: int,
+    cover_spec=None,
 ) -> list:
+    if cover_spec is None:
+        cover_spec = template.cover
     issues: list = []
     try:
         zp = zipfile.ZipFile(epub_path)
@@ -120,7 +123,7 @@ def verify_epub(
         try:
             from PIL import Image
             im = Image.open(io.BytesIO(zp.read(cover_name)))
-            spec = template.cover
+            spec = cover_spec
             if im.size != (spec.width, spec.height):
                 issues.append(
                     f"封面尺寸不符合模板：{im.size[0]}x{im.size[1]} != {spec.width}x{spec.height}"

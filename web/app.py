@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+import json
 import os
 import re
 import threading
@@ -32,7 +33,7 @@ from app.scraper import (
     search_candidates,
     prepare_book_files,
 )
-from app.template import load_template
+from app.template import effective_cover, list_font_files, load_template
 from app.watcher import process_all
 
 app = Flask(__name__, static_folder="static", static_url_path="/static")
@@ -50,6 +51,45 @@ settings = Settings.from_env()
 setup_logging(settings)
 ensure_template(settings)
 template = load_template(settings.template_dir)
+
+PREFS_PATH = settings.output_dir / ".prefs.json"
+
+
+def _load_prefs() -> dict:
+    try:
+        data = json.loads(PREFS_PATH.read_text(encoding="utf-8"))
+        return data if isinstance(data, dict) else {}
+    except Exception:
+        return {}
+
+
+def _save_prefs(data: dict) -> None:
+    try:
+        PREFS_PATH.write_text(
+            json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8"
+        )
+    except OSError:
+        pass
+
+
+def _apply_prefs() -> None:
+    """把 Web 端保存的设置恢复回来；环境变量优先，未设置时用 prefs。"""
+    prefs = _load_prefs()
+    if not settings.font_file and prefs.get("font_file"):
+        settings.font_file = str(prefs["font_file"])
+    if not settings.cover_width and prefs.get("cover_width"):
+        try:
+            settings.cover_width = int(prefs["cover_width"])
+        except (TypeError, ValueError):
+            pass
+    if not settings.cover_height and prefs.get("cover_height"):
+        try:
+            settings.cover_height = int(prefs["cover_height"])
+        except (TypeError, ValueError):
+            pass
+
+
+_apply_prefs()
 
 
 def _tail_log(n: int = 200) -> str:
@@ -106,17 +146,65 @@ def index():
 
 @app.get("/api/health")
 def health():
+    cover_spec = effective_cover(template, settings)
     return jsonify({
         "ok": True,
         "template": template.data.get("template_name", ""),
-        "cover": f"{template.cover.width}x{template.cover.height} q{template.cover.quality}",
+        "cover": f"{cover_spec.width}x{cover_spec.height} q{cover_spec.quality}",
+        "cover_default": f"{template.cover.width}x{template.cover.height}",
         "fonts": [f.family for f in template.fonts],
+        "font_files": list_font_files(settings.fonts_dir),
+        "font_file": settings.font_file,
         "dirs": {
             "input": str(settings.input_dir),
             "meta": str(settings.meta_dir),
             "output": str(settings.output_dir),
             "template": str(settings.template_dir),
         },
+    })
+
+
+@app.get("/api/settings")
+def settings_get():
+    cover_spec = effective_cover(template, settings)
+    return jsonify({
+        "ok": True,
+        "cover_width": cover_spec.width,
+        "cover_height": cover_spec.height,
+        "cover_default": f"{template.cover.width}x{template.cover.height}",
+        "font_file": settings.font_file,
+        "fonts": list_font_files(settings.fonts_dir),
+    })
+
+
+@app.post("/api/settings")
+def settings_save():
+    """保存转换设置：封面分辨率 + 嵌入字体。"""
+    data = request.get_json(silent=True) or request.form
+    font_file = (data.get("font_file") or "").strip()
+    if font_file and font_file not in list_font_files(settings.fonts_dir):
+        return jsonify({"ok": False, "message": "字体文件不存在于 fonts 目录"}), 400
+    try:
+        cover_w = int(data.get("cover_width") or 0)
+        cover_h = int(data.get("cover_height") or 0)
+    except (TypeError, ValueError):
+        return jsonify({"ok": False, "message": "分辨率必须是整数"}), 400
+    if cover_w or cover_h:
+        if cover_w <= 0 or cover_h <= 0 or cover_w > 4000 or cover_h > 4000:
+            return jsonify({"ok": False, "message": "分辨率数值不合理（1~4000）"}), 400
+    settings.font_file = font_file
+    settings.cover_width = cover_w
+    settings.cover_height = cover_h
+    _save_prefs({
+        "font_file": font_file,
+        "cover_width": cover_w,
+        "cover_height": cover_h,
+    })
+    cover_spec = effective_cover(template, settings)
+    return jsonify({
+        "ok": True,
+        "cover": f"{cover_spec.width}x{cover_spec.height}",
+        "font_file": font_file,
     })
 
 

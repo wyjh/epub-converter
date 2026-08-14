@@ -99,6 +99,24 @@
         <div class="hint">导入后到下方书架操作：点“刮削”选择元信息、“刮封面”挑封面，确认后点“转换”。</div>
       </div>
 
+      <div class="card">
+        <h2>转换设置</h2>
+        <div class="row">
+          <div><label>封面宽度（px）</label><input type="number" id="s-cover-w" min="1" max="4000" placeholder="440"/></div>
+          <div><label>封面高度（px）</label><input type="number" id="s-cover-h" min="1" max="4000" placeholder="578"/></div>
+        </div>
+        <label>嵌入字体 <span class="muted">（默认使用模板字体）</span></label>
+        <select id="s-font">
+          <option value="">默认（模板）</option>
+        </select>
+        <div style="margin-top:12px">
+          <button class="btn btn-primary" id="btn-save-settings">保存设置</button>
+        </div>
+        <div class="status" id="settings-status"></div>
+        <div class="hint">封面分辨率默认 440×578（与模板一致），可自定义，封面会按新尺寸居中裁切生成。
+          字体选项来自 /fonts 目录，放入 .ttf / .otf / .ttc 文件后刷新页面即可出现。</div>
+      </div>
+
       <div class="card" id="editor-card" style="display:none">
         <h2>刮削与编辑 <span class="muted" id="editor-stem"></span></h2>
         <div class="row">
@@ -271,6 +289,37 @@ async function loadHealth() {
     $("health-line").textContent = d.message || "无法连接服务";
   }
 }
+
+async function loadSettings() {
+  const d = await api("/api/settings");
+  if (!d.ok) return;
+  $("s-cover-w").value = d.cover_width || "";
+  $("s-cover-h").value = d.cover_height || "";
+  const sel = $("s-font");
+  sel.innerHTML = '<option value="">默认（模板）</option>' +
+    (d.fonts || []).map(f => '<option value="' + esc(f) + '">' + esc(f) + "</option>").join("");
+  sel.value = d.font_file || "";
+}
+
+$("btn-save-settings").onclick = async () => {
+  const st = $("settings-status");
+  showStatus(st, "正在保存…", true);
+  const d = await api("/api/settings", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      cover_width: parseInt($("s-cover-w").value || "0", 10) || 0,
+      cover_height: parseInt($("s-cover-h").value || "0", 10) || 0,
+      font_file: $("s-font").value,
+    }),
+  });
+  if (d.ok) {
+    showStatus(st, "已保存：封面 " + d.cover + (d.font_file ? "，字体 " + d.font_file : "，字体默认"), true);
+    loadHealth();
+  } else {
+    showStatus(st, d.message || "保存失败", false);
+  }
+};
 
 async function loadBooks() {
   const d = await api("/api/books");
@@ -626,6 +675,7 @@ $("btn-clear-output").onclick = async () => {
 $("btn-refresh").onclick = () => { loadBooks(); loadLogs(); };
 
 loadHealth();
+loadSettings();
 loadBooks();
 loadLogs();
 setInterval(loadBooks, 5000);

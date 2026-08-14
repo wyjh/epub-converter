@@ -17,6 +17,8 @@ from difflib import SequenceMatcher
 from pathlib import Path
 from typing import Optional
 
+from app.template import effective_cover
+
 log = logging.getLogger("scraper")
 
 WEREAD_SEARCH_URL = "https://weread.qq.com/web/search/global"
@@ -503,7 +505,9 @@ def prepare_book_files(
     cover_path = same_stem_cover(input_dir, stem)
     if cover_path is None and scraped and download_cover(scraped.get("cover", ""), input_dir / f"{stem}.jpg"):
         cover_path = input_dir / f"{stem}.jpg"
-    if cover_path is None and make_placeholder_cover(title, input_dir / f"{stem}.jpg", template.cover, fonts_dir):
+    if cover_path is None and make_placeholder_cover(
+        title, input_dir / f"{stem}.jpg", effective_cover(template, settings), fonts_dir
+    ):
         cover_path = input_dir / f"{stem}.jpg"
 
     data = {"title": title, "author": author, "description": description}

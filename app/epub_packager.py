@@ -246,11 +246,15 @@ def pack_epub(
     settings: Settings,
     work: Path,
     out_path: Path,
+    cover_spec=None,
 ) -> Path:
     """按样例结构直接打包 EPUB（mimetype 必须首个且不压缩）。"""
     uuid_id = str(uuid.uuid4())
     timestamp = datetime.now(timezone.utc).astimezone().isoformat(timespec="seconds")
-    cover_w, cover_h = template.cover.width, template.cover.height
+    if cover_spec is None:
+        from app.template import effective_cover
+        cover_spec = effective_cover(template, settings)
+    cover_w, cover_h = cover_spec.width, cover_spec.height
     lang = meta.lang or "zh"
     font_files = sorted({(f.sample_file or f.provided_file) for f in template.fonts})
     top_dir = f"{sanitize_filename(meta.title or 'book', 60)}.epub"

@@ -22,6 +22,9 @@ class Settings:
     ebook_convert: str = "ebook-convert"
     dry_run: bool = False
     direct_mode: bool = False
+    font_file: str = ""            # 指定嵌入的字体文件名（fonts 目录内），空则用模板默认
+    cover_width: int = 0           # 封面宽度覆盖（0 = 模板默认）
+    cover_height: int = 0          # 封面高度覆盖（0 = 模板默认）
 
     @classmethod
     def from_env(cls) -> "Settings":
@@ -32,6 +35,11 @@ class Settings:
         force = os.environ.get("FORCE_RECONVERT", "0").lower() in ("1", "true", "yes", "on")
         dry_run = os.environ.get("DRY_RUN", "0").lower() in ("1", "true", "yes", "on")
         direct_mode = os.environ.get("DIRECT_CONVERT", "0").lower() in ("1", "true", "yes", "on")
+        def _int_env(name: str) -> int:
+            try:
+                return int(os.environ.get(name, "0") or 0)
+            except (TypeError, ValueError):
+                return 0
         output_dir = p("OUTPUT_DIR", "/output")
         return cls(
             input_dir=p("INPUT_DIR", "/input"),
@@ -46,6 +54,9 @@ class Settings:
             ebook_convert=os.environ.get("EBOOK_CONVERT", "ebook-convert"),
             dry_run=dry_run,
             direct_mode=direct_mode,
+            font_file=os.environ.get("FONT_FILE", "") or "",
+            cover_width=_int_env("COVER_WIDTH"),
+            cover_height=_int_env("COVER_HEIGHT"),
         )
 
     def ensure_dirs(self) -> None:

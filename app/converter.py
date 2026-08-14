@@ -19,7 +19,7 @@ from app.cover_processor import CoverError, find_cover_image, process_cover
 from app.epub_builder import EpubConvertError, build_command, run_ebook_convert
 from app.html_builder import build_book_html
 from app.meta_loader import Meta, load_meta
-from app.template import Template, TemplateError, build_working_css
+from app.template import Template, TemplateError, build_working_css, effective_cover
 from app.txt_reader import TxtReadError, clean_lines, read_text_with_encoding
 from app.verifier import verify_epub
 
@@ -171,7 +171,7 @@ def _copy_fonts(settings: Settings, template: Template, work: Path) -> None:
     fonts_dir.mkdir(parents=True, exist_ok=True)
     missing = []
     for font in template.fonts:
-        src = template.provided_font_file(font, settings.fonts_dir)
+        src = template.resolve_font_file(font, settings)
         if src is None:
             missing.append(f"{font.family} ({font.provided_file})")
             continue
@@ -236,18 +236,19 @@ def convert_one(txt_path: Path, settings: Settings, template: Template, force: b
         log.info("[%s] 识别到 %d 章", stem, len(chapters))
 
         # 3) 封面
+        cover_spec = effective_cover(template, settings)
         cover_src = find_cover_image(txt_path, meta.cover, settings.input_dir)
         if cover_src is None:
             from app.scraper import make_placeholder_cover
             placeholder = settings.input_dir / f"{stem}.jpg"
-            if make_placeholder_cover(meta.title or stem, placeholder, template.cover, settings.fonts_dir):
+            if make_placeholder_cover(meta.title or stem, placeholder, cover_spec, settings.fonts_dir):
                 cover_src = placeholder
                 log.info("[%s] 未找到封面，已自动生成占位封面", stem)
         if cover_src is None:
             raise ConvertError("未找到封面图片且占位封面生成失败")
-        cover_path = process_cover(cover_src, work / "cover.jpg", template.cover)
+        cover_path = process_cover(cover_src, work / "cover.jpg", cover_spec)
         log.info("[%s] 封面已标准化为 %dx%d（%s）",
-                 stem, template.cover.width, template.cover.height, cover_src.name)
+                 stem, cover_spec.width, cover_spec.height, cover_src.name)
 
         # 4) 字体 + CSS（原版复制，仅替换字体 src）
         _copy_fonts(settings, template, work)
@@ -272,7 +273,7 @@ def convert_one(txt_path: Path, settings: Settings, template: Template, force: b
                 log.info("[%s] DRY-RUN 直接打包：%s", stem, out_path.name)
             else:
                 from app.epub_packager import pack_epub
-                pack_epub(meta, chapters, template, settings, work, out_path)
+                pack_epub(meta, chapters, template, settings, work, out_path, cover_spec=cover_spec)
                 log.info("[%s] 直接打包完成（CSS/字体/封面/目录与样例一致）", stem)
         else:
             cmd = build_command(settings, template, meta, html_path, out_path, cover_path)
@@ -286,7 +287,7 @@ def convert_one(txt_path: Path, settings: Settings, template: Template, force: b
             raise ConvertError("转换流程未生成输出文件")
 
         # 7) 模板一致性校验
-        issues = verify_epub(out_path, template, meta, len(chapters))
+        issues = verify_epub(out_path, template, meta, len(chapters), cover_spec=cover_spec)
         if issues:
             failed_dir = settings.output_dir / "failed"
             failed_dir.mkdir(exist_ok=True)
