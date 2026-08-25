@@ -45,6 +45,21 @@ services:
       - ./template:/template        # 固化模板（可放 sample.epub 自动提取）
 ```
 
+### 挂载 template / fonts 目录的要求
+
+镜像内置了默认模板和苹方字体，**不挂载 `template/`、`fonts/` 也能直接运行**。
+
+如果要挂载自定义目录覆盖内置内容，**必须保证挂载的本地目录非空且内容正确**，否则空目录会盖住镜像内置内容，导致启动报“找不到 template.yml”或转换时报“字体缺失”：
+
+- `./template:/template`：本地目录需要包含固化模板文件：
+  - `template.yml`（模板配置，必需）
+  - `stylesheet.css`、`page_styles.css`、`page_styles1.css`（样式，必需）
+  - 可选：`sample.epub`（放入后容器启动时会自动提取模板）、`references/`、`sample_cover.jpg`
+  - 最简单的方式：直接把项目仓库自带的 `template/` 目录挂上去（里面已是完整固化模板）。
+- `./fonts:/fonts`：本地目录需要包含字体文件（`.ttf` / `.otf` / `.ttc`），否则转换时提示字体缺失；直接挂项目自带的 `fonts/` 目录即可。
+
+> 本地目录是空的就不要挂载，使用镜像内置模板/字体即可。
+
 ---
 
 ## 功能特性
@@ -130,7 +145,7 @@ docker run -d --name epub-converter --restart unless-stopped \
   liangjh6960/epub-converter:latest
 ```
 
-镜像默认内置模板与苹方字体，直接跑即可；自定义字体/模板时挂载 `fonts/`、`template/` 目录覆盖。
+镜像默认内置模板与苹方字体，直接跑即可；自定义字体/模板时挂载 `fonts/`、`template/` 目录覆盖（挂载的目录必须非空，具体见上文“挂载 template / fonts 目录的要求”）。
 
 ---
 
