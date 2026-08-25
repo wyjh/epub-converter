@@ -1,38 +1,33 @@
-FROM python:3.11-alpine
+FROM python:3.11-slim-bookworm
 
 ENV DEBIAN_FRONTEND=noninteractive \
     PYTHONUNBUFFERED=1 \
     PIP_NO_CACHE_DIR=1
 
-RUN apk add --no-cache bash
-
-# 转换默认使用内置“直接打包模式”（排版与样例 1:1，无需额外依赖）
+# 是否内置 calibre（ebook-convert）。
+# 默认不安装（构建快、镜像小）：转换会自动使用内置“直接打包模式”，
+# 排版与样例 1:1；需要 calibre 时构建加 --build-arg INSTALL_CALIBRE=1。
+ARG INSTALL_CALIBRE=0
+RUN if [ "$INSTALL_CALIBRE" = "1" ]; then \
+      apt-get update \
+      && apt-get install -y calibre \
+      && rm -rf /var/lib/apt/lists/*; \
+    fi
 
 COPY requirements.txt /tmp/requirements.txt
-# 依赖分层安装（每层小，方便在弱网环境下推送镜像）
-RUN pip install --no-cache-dir PyYAML Pillow
-RUN pip install --no-cache-dir chardet Flask
+RUN pip install --no-cache-dir -r /tmp/requirements.txt
 
 WORKDIR /app
 COPY app /app/app
 COPY tools /app/tools
 COPY web /app/web
 COPY entrypoint.sh /app/entrypoint.sh
-# 内置默认模板/字体备份：启动时若挂载目录为空会自动恢复到 /template、/fonts
-COPY template /opt/epub-defaults/template
-
-# 字体逐个 COPY：每个字体重开一层，镜像仍内置全部字体
-COPY "fonts/PingFangSC-Light.ttf" /opt/epub-defaults/fonts/
-COPY "fonts/PingFangSC-Thin.ttf" /opt/epub-defaults/fonts/
-COPY "fonts/PingFangSC-Regular.ttf" /opt/epub-defaults/fonts/
-COPY "fonts/PingFangSC-Medium.ttf" /opt/epub-defaults/fonts/
-COPY "fonts/PingFangSC-Semibold.ttf" /opt/epub-defaults/fonts/
-COPY ["fonts/PingFang Heavy.ttf", "/opt/epub-defaults/fonts/"]
-COPY "fonts/PingFang-SC-Light.otf" /opt/epub-defaults/fonts/
+COPY template /template
+COPY fonts /fonts
 
 EXPOSE 8080
 
-RUN mkdir -p /input /meta /output /work /logs /template /fonts \
+RUN mkdir -p /input /meta /output /work /logs \
     && chmod +x /app/entrypoint.sh
 
 # 运行时数据目录挂载点
