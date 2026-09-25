@@ -18,13 +18,13 @@ jobs:
     steps:
       - name: 检查 Docker Hub 凭据
         env:
-          DH_USER: ${{ secrets.DOCKERHUB_USERNAME }}
-          DH_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+          DH_USER: ${{ secrets.DOCKERHUB_USERNAME || vars.DOCKERHUB_USERNAME }}
+          DH_TOKEN: ${{ secrets.DOCKERHUB_TOKEN || vars.DOCKERHUB_TOKEN }}
         run: |
           echo "DOCKERHUB_USERNAME : $([ -n "$DH_USER" ] && echo '已读取到' || echo '缺失')"
           echo "DOCKERHUB_TOKEN    : $([ -n "$DH_TOKEN" ] && echo '已读取到' || echo '缺失')"
           if [ -z "$DH_USER" ] || [ -z "$DH_TOKEN" ]; then
-            echo "::error title=缺少 Docker Hub 凭据::请在仓库 Settings → Secrets and variables → Actions 的【Secrets】标签页（不是 Variables、不是 Environments）添加两个仓库密钥，名称必须完全一致：DOCKERHUB_USERNAME、DOCKERHUB_TOKEN"
+            echo "::error title=缺少 Docker Hub 凭据::请在仓库 Settings → Secrets and variables → Actions 添加两个密钥，名称必须完全一致：DOCKERHUB_USERNAME、DOCKERHUB_TOKEN。放在【Secrets】或【Variables】标签页都可以（不要放在 Environments）。"
             exit 1
           fi
 
@@ -46,8 +46,8 @@ jobs:
       - name: 登录 Docker Hub
         uses: docker/login-action@v3
         with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          username: ${{ secrets.DOCKERHUB_USERNAME || vars.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN || vars.DOCKERHUB_TOKEN }}
 
       - name: 生成镜像标签
         id: meta
