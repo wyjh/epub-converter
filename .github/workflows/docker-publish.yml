@@ -16,10 +16,15 @@ jobs:
     permissions:
       contents: read
     steps:
-      - name: 检查凭据是否已配置
+      - name: 检查 Docker Hub 凭据
+        env:
+          DH_USER: ${{ secrets.DOCKERHUB_USERNAME }}
+          DH_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
         run: |
-          if [ -z "${{ secrets.DOCKERHUB_USERNAME }}" ] || [ -z "${{ secrets.DOCKERHUB_TOKEN }}" ]; then
-            echo "::error::缺少 Docker Hub 凭据。请到仓库 Settings → Secrets and variables → Actions 添加 DOCKERHUB_USERNAME 和 DOCKERHUB_TOKEN（Token 在 https://hub.docker.com/settings/security 生成）"
+          echo "DOCKERHUB_USERNAME : $([ -n "$DH_USER" ] && echo '已读取到' || echo '缺失')"
+          echo "DOCKERHUB_TOKEN    : $([ -n "$DH_TOKEN" ] && echo '已读取到' || echo '缺失')"
+          if [ -z "$DH_USER" ] || [ -z "$DH_TOKEN" ]; then
+            echo "::error title=缺少 Docker Hub 凭据::请在仓库 Settings → Secrets and variables → Actions 的【Secrets】标签页（不是 Variables、不是 Environments）添加两个仓库密钥，名称必须完全一致：DOCKERHUB_USERNAME、DOCKERHUB_TOKEN"
             exit 1
           fi
 
