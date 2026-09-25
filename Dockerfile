@@ -1,4 +1,8 @@
-FROM python:3.11-slim-bookworm
+# 基础镜像地址可用 --build-arg 覆盖，便于在网络受限环境下换用镜像源，例如：
+#   docker build --build-arg BASE_IMAGE=docker.m.daocloud.io/library/python:3.11-slim-bookworm \
+#                -t liangjh6960/epub-converter:latest .
+ARG BASE_IMAGE=python:3.11-slim-bookworm
+FROM ${BASE_IMAGE}
 
 ENV DEBIAN_FRONTEND=noninteractive \
     PYTHONUNBUFFERED=1 \
