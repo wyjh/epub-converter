@@ -1,9 +1,24 @@
+# 版本控制与本机信息
 .git
+.gitignore
+.dockerignore
+.ssh-local
+.codex
+.agents
+
+# 运行数据（不打进构建上下文，镜像里也不需要）
+input
+meta
 output
 logs
+work
+sources.yml
+config
+tests
+
+# 运行时产物
 __pycache__
 *.pyc
 .DS_Store
-tests
-.codex
-.agents
+.docker-config
+.github

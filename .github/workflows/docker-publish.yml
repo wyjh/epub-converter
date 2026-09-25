@@ -1,0 +1,65 @@
+name: 构建并推送 Docker 镜像
+
+# 推送到 main 或打 tag 时自动构建，也可以在 Actions 页面手动触发
+on:
+  push:
+    branches: [main]
+    tags: ["v*"]
+  workflow_dispatch:
+
+env:
+  IMAGE_NAME: liangjh6960/epub-converter
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: 检查凭据是否已配置
+        run: |
+          if [ -z "${{ secrets.DOCKERHUB_USERNAME }}" ] || [ -z "${{ secrets.DOCKERHUB_TOKEN }}" ]; then
+            echo "::error::缺少 Docker Hub 凭据。请到仓库 Settings → Secrets and variables → Actions 添加 DOCKERHUB_USERNAME 和 DOCKERHUB_TOKEN（Token 在 https://hub.docker.com/settings/security 生成）"
+            exit 1
+          fi
+
+      - name: 检出代码
+        uses: actions/checkout@v4
+
+      # 苹方字体体积大且有版权，不随仓库分发；本地构建时镜像会内置字体，
+      # CI 构建则放一个占位说明，实际使用时把字体挂载到 /fonts 即可。
+      - name: 准备 fonts 目录
+        run: |
+          mkdir -p fonts
+          if [ -z "$(ls -A fonts 2>/dev/null)" ]; then
+            echo "字体未随仓库分发。运行时把 .ttf/.otf/.ttc 挂载到 /fonts 即可（docker-compose 已默认挂载）。" > fonts/README.txt
+          fi
+
+      - name: 设置 Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: 登录 Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: 生成镜像标签
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.IMAGE_NAME }}
+          tags: |
+            type=raw,value=latest,enable={{is_default_branch}}
+            type=ref,event=tag
+            type=sha,prefix=sha-,format=short
+
+      - name: 构建并推送
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max

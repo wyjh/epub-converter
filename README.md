@@ -40,7 +40,7 @@ services:
     volumes:
       - ./input:/input              # 待转换 TXT + 封面
       - ./meta:/meta                # 同名元信息文件
-      - ./fonts:/fonts              # 字体目录：放入任意 .ttf/.otf/.ttc 自动识别，可覆盖镜像内置字体
+      - ./fonts:/fonts              # 字体目录：放入任意 .ttf/.otf/.ttc 自动识别（必需，镜像不含字体）
       - ./output:/output            # 转换结果 + 日志
       - ./template:/template        # 固化模板（可放 sample.epub 自动提取）
       - ./config:/config            # 刮削源配置（sources.yml，首次启动自动生成）
@@ -48,7 +48,7 @@ services:
 
 ### 挂载 template / fonts 目录的要求
 
-镜像内置了默认模板和苹方字体，**不挂载 `template/`、`fonts/` 也能直接运行**。
+镜像内置了固化模板，**不挂载 `template/` 也能直接运行**；但**字体不随镜像分发**，需要把字体文件放进 `fonts/` 目录并挂载，否则转换时会报字体缺失。
 
 如果要挂载自定义目录覆盖内置内容，**必须保证挂载的本地目录非空且内容正确**，否则空目录会盖住镜像内置内容，导致启动报“找不到 template.yml”或转换时报“字体缺失”：
 
@@ -59,7 +59,7 @@ services:
   - 最简单的方式：直接把项目仓库自带的 `template/` 目录挂上去（里面已是完整固化模板）。
 - `./fonts:/fonts`：本地目录需要包含字体文件（`.ttf` / `.otf` / `.ttc`），否则转换时提示字体缺失；直接挂项目自带的 `fonts/` 目录即可。
 
-> 本地目录是空的就不要挂载，使用镜像内置模板/字体即可。
+> `template/` 本地为空就别挂载，直接用镜像内置模板；但 `fonts/` 必须非空，否则转换会报字体缺失。
 
 ---
 
@@ -105,7 +105,7 @@ mkdir -p input meta fonts output template
 # 3. 准备数据
 #    input/    放入 TXT 小说（可选同名的 jpg/png 封面）
 #    meta/     放入与 TXT 同名的 yaml 元信息（可选，不填也能转）
-#    fonts/    放入任意字体 *.ttf/*.otf/*.ttc（可选，默认用镜像内置字体；见“字体配置”）
+#    fonts/    放入任意字体 *.ttf/*.otf/*.ttc（必需；见“字体配置”）
 #    template/ 已有固化模板则无需操作；放 sample.epub 可让容器自动提取模板
 
 # 4. 构建并启动（后台运行）
@@ -151,7 +151,27 @@ docker run -d --name epub-converter --restart unless-stopped \
   liangjh6960/epub-converter:latest
 ```
 
-镜像默认内置模板与苹方字体，直接跑即可；自定义字体/模板时挂载 `fonts/`、`template/` 目录覆盖（挂载的目录必须非空，具体见上文“挂载 template / fonts 目录的要求”）。
+镜像内置固化模板（`template/`）；但**字体不随 Docker Hub 镜像分发**（苹方体积大且有版权），请把字体文件放进 `fonts/` 目录，`docker-compose.yml` 已默认挂载 `./fonts`。
+
+### 自动构建并推送镜像（推荐）
+
+仓库带了 GitHub Actions 工作流 `.github/workflows/docker-publish.yml`：**推送到 `main` 或打 `v*` 标签时会自动构建并推送 `liangjh6960/epub-converter:latest`**，也可以到仓库的 Actions 页面手动触发（Run workflow）。
+
+首次使用需配置两个仓库密钥（只需一次）：
+
+1. 到 https://hub.docker.com/settings/security 生成一个 **Access Token**（权限选 Read & Write）
+2. 打开仓库 **Settings → Secrets and variables → Actions → New repository secret**，添加：
+   - `DOCKERHUB_USERNAME` = `liangjh6960`
+   - `DOCKERHUB_TOKEN` = 上一步生成的 Token
+
+配好之后再推送代码，镜像就会自动更新——**本地不需要装 Docker，也不受本地网络能否访问 Docker Hub 影响**。
+
+### 本地手动构建推送
+
+```bash
+docker build -t liangjh6960/epub-converter:latest .
+docker push liangjh6960/epub-converter:latest
+```
 
 ---
 
@@ -451,7 +471,7 @@ SourceDef("yours", "你的源名", search_yours, throttle=1.0, enabled=True,
 | `./template` | `/template` | 固化模板；可放入 `sample.epub` 自动提取 |
 | `./config` | `/config` | 刮削源配置 `sources.yml`（首次启动自动生成，可关源/加自定义源） |
 
-> 镜像已内置默认模板与苹方字体，**不挂载也能直接运行**；挂载 `template/`、`fonts/` 用于自定义覆盖。
+> 镜像已内置默认模板；**字体需自己放进 `fonts/` 并挂载**。挂载 `template/` 可覆盖内置模板。
 
 ## 手动运行（Docker run）
 
@@ -556,7 +576,7 @@ fonts:
 
 默认嵌入 **PingFangSC-Light**（苹方细体）。转换时程序只替换 `@font-face` 的 `src` 指向实际嵌入的字体文件，其余 CSS 逐字保留。字体选择优先级：**Web“转换设置”指定的字体 / `FONT_FILE` 环境变量 > 模板默认（PingFangSC-Light）> `fonts/` 目录里自动探测的字体**。
 
-> 苹方字体体积大且受版权保护，本仓库不包含字体文件。镜像内置一份默认字体；想用其他字体，把文件放进 `fonts/`（挂载目录）即可，无需改代码。
+> 苹方字体体积大且受版权保护，本仓库不包含字体文件，**Docker Hub 上的镜像同样不含字体**：把字体文件放进 `fonts/` 目录（`docker-compose.yml` 已默认挂载）即可，无需改代码。本地执行 `docker build` 时若 `fonts/` 里有字体，则会一并打进镜像。
 
 ---
 
