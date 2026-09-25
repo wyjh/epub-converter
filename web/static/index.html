@@ -6,79 +6,148 @@
 <title>EPUB 标准化转换工具</title>
 <style>
   :root {
-    --bg: #f4f2ed; --card: #ffffff; --line: #e3ded4; --ink: #2b2b2b;
-    --muted: #7a756b; --accent: #3f83e8; --ok: #2e9e5b; --bad: #c0392b;
+    --bg: #f5f3ef; --card: #ffffff; --line: #e7e2d9; --line-soft: #f1ede6;
+    --ink: #2b2b2b; --ink-soft: #4a443a; --muted: #857e72;
+    --accent: #3f83e8; --accent-dark: #2f6fd0; --ok: #2e9e5b; --bad: #c0392b;
+    --radius: 12px; --shadow: 0 1px 2px rgba(43,43,43,.05), 0 4px 12px rgba(43,43,43,.045);
   }
   * { box-sizing: border-box; }
   body { margin: 0; background: var(--bg); color: var(--ink);
-         font-family: "PingFang SC", "Microsoft YaHei", system-ui, sans-serif; }
-  header { background: #262f3f; color: #f5f2ea; padding: 18px 28px; }
-  header h1 { margin: 0; font-size: 20px; }
-  header .sub { margin-top: 4px; font-size: 12px; opacity: .75; }
-  main { max-width: 1200px; margin: 24px auto; padding: 0 20px; }
-  .grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 18px; }
-  @media (max-width: 900px) { .grid { grid-template-columns: 1fr; } }
-  .card { background: var(--card); border: 1px solid var(--line); border-radius: 10px;
-          padding: 18px 20px; margin-bottom: 18px; }
-  .card h2 { margin: 0 0 12px; font-size: 15px; color: #4a443a; }
-  label { display: block; font-size: 13px; margin: 10px 0 4px; color: var(--muted); }
+         font-family: "PingFang SC", "Microsoft YaHei", system-ui, -apple-system, sans-serif;
+         font-size: 14px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  header { background: #262f3f; color: #f5f2ea; padding: 20px 28px;
+           box-shadow: 0 1px 3px rgba(0,0,0,.12); }
+  header h1 { margin: 0; font-size: 19px; font-weight: 600; letter-spacing: .3px; }
+  header .sub { margin-top: 5px; font-size: 12px; opacity: .72; }
+  main { max-width: 1240px; margin: 22px auto 64px; padding: 0 20px; }
+
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+          padding: 18px 20px; margin-bottom: 16px; box-shadow: var(--shadow); }
+  .card h2 { margin: 0 0 14px; font-size: 15px; font-weight: 600; color: var(--ink-soft); }
+  .grid-2 { display: flex; gap: 16px; align-items: flex-start; margin-bottom: 16px; }
+  .grid-2 > .card { flex: 1 1 0; min-width: 0; margin-bottom: 0; }
+  @media (max-width: 940px) { .grid-2 { flex-direction: column; } }
+
+  label { display: block; font-size: 13px; margin: 12px 0 5px; color: var(--muted); }
   input[type=text], input[type=number], textarea, select {
-    width: 100%; padding: 8px 10px; border: 1px solid var(--line); border-radius: 6px;
-    font-size: 14px; background: #fff; color: var(--ink); }
-  textarea { resize: vertical; min-height: 72px; }
-  input[type=file] { width: 100%; padding: 6px 0; font-size: 13px; color: var(--muted); }
-  label.chk { display: flex; align-items: center; gap: 6px; margin: 8px 0;
-              color: var(--ink); font-size: 13px; font-weight: 400; }
+    width: 100%; padding: 8px 11px; border: 1px solid var(--line); border-radius: 8px;
+    font-size: 14px; background: #fff; color: var(--ink); font-family: inherit;
+    transition: border-color .15s, box-shadow .15s; }
+  input[type=text]:focus, input[type=number]:focus, textarea:focus, select:focus {
+    outline: 0; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(63,131,232,.13); }
+  textarea { resize: vertical; min-height: 84px; line-height: 1.6; }
+  input[type=file] { padding: 7px 0; font-size: 13px; color: var(--muted); }
+  label.chk { display: inline-flex; align-items: center; gap: 6px; margin: 0;
+              color: var(--ink-soft); font-size: 13px; cursor: pointer; }
   label.chk input { width: auto; }
   .row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-  .btn { border: 0; border-radius: 8px; padding: 10px 16px; font-size: 14px; cursor: pointer; }
-  .btn-primary { background: var(--accent); color: #fff; }
-  .btn-primary:hover { filter: brightness(1.08); }
-  .btn-ghost { background: #efece4; color: #4a443a; }
-  .btn-ghost:hover { background: #e6e2d8; }
-  .act { font-size: 12px; padding: 5px 10px; margin: 2px; }
-  .hint { font-size: 12px; color: var(--muted); margin-top: 8px; line-height: 1.5; }
-  .status { margin-top: 12px; padding: 10px 12px; border-radius: 8px; font-size: 13px; display: none; }
-  .status.ok { display: block; background: #e8f6ee; color: var(--ok); }
+
+  .btn { border: 0; border-radius: 8px; padding: 8px 14px; font-size: 13px; cursor: pointer;
+         font-family: inherit; transition: background .15s, box-shadow .15s, color .15s; }
+  .btn:disabled { opacity: .55; cursor: default; }
+  .btn-primary { background: var(--accent); color: #fff; box-shadow: 0 1px 2px rgba(63,131,232,.28); }
+  .btn-primary:hover:not(:disabled) { background: var(--accent-dark); }
+  .btn-ghost { background: #f2efe9; color: var(--ink-soft); }
+  .btn-ghost:hover:not(:disabled) { background: #e9e4db; }
+  .act { font-size: 12px; padding: 5px 10px; margin: 0 0 0 4px; border-radius: 7px; }
+
+  .hint { font-size: 12px; color: var(--muted); margin-top: 10px; line-height: 1.65; }
+  .status { margin-top: 12px; padding: 9px 12px; border-radius: 8px; font-size: 13px; display: none; }
+  .status.ok { display: block; background: #e9f7ef; color: var(--ok); }
   .status.err { display: block; background: #fdecea; color: var(--bad); }
+  .empty { color: var(--muted); font-size: 13px; padding: 10px 0; text-align: center; }
+  .muted { color: var(--muted); }
+
   table { width: 100%; border-collapse: collapse; font-size: 13px; }
-  th, td { text-align: left; padding: 8px 6px; border-bottom: 1px solid var(--line); }
-  th { color: var(--muted); font-weight: 500; }
+  th { text-align: left; padding: 9px 8px; font-size: 12px; font-weight: 600; color: var(--muted);
+       background: #f8f6f1; border-bottom: 1px solid var(--line); letter-spacing: .3px; }
+  th:first-child { border-top-left-radius: 8px; }
+  th:last-child { border-top-right-radius: 8px; }
+  td { text-align: left; padding: 11px 8px; border-bottom: 1px solid var(--line-soft);
+       vertical-align: top; }
+  tbody tr:last-child td { border-bottom: 0; }
+  tbody tr:hover { background: #fbfaf8; }
   a.dl { color: var(--accent); text-decoration: none; font-weight: 600; }
   a.dl:hover { text-decoration: underline; }
-  .muted { color: var(--muted); }
-  .badge { font-size: 11px; padding: 1px 8px; border-radius: 10px; background: #efece4; color: #4a443a; }
-  .badge.ok { background: #e8f6ee; color: var(--ok); }
+
+  .badge { display: inline-block; font-size: 11px; padding: 2px 9px; border-radius: 20px;
+           background: #f1ede5; color: #6f685d; margin-right: 4px; white-space: nowrap; }
+  .badge.ok { background: #e9f7ef; color: var(--ok); }
   .badge.fail { background: #fdecea; color: var(--bad); }
-  pre.log { background: #1d232e; color: #c9d4e3; padding: 12px; border-radius: 8px;
-            font-size: 12px; line-height: 1.5; overflow: auto; max-height: 460px; white-space: pre-wrap; }
-  .empty { color: var(--muted); font-size: 13px; padding: 8px 0; }
+
+  pre.log { background: #232a36; color: #c9d4e3; padding: 12px 14px; border-radius: 10px;
+            font-size: 12px; line-height: 1.6; overflow: auto; max-height: 230px;
+            white-space: pre-wrap; margin: 0;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+
+  /* 导入区：一行搞定，不占高度 */
+  .import-row { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+  .import-row input[type=file] { flex: 0 1 340px; }
+
+  /* 书架：页面主角，全宽自然展开，靠页面滚动即可 */
+  .shelf-head { display: flex; align-items: center; justify-content: space-between;
+                gap: 12px; flex-wrap: wrap; margin-bottom: 12px; }
+  .shelf-head h2 { margin: 0; }
+  .toolbar { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-bottom: 4px; }
+  .toolbar input[type=text] { flex: 1 1 220px; max-width: 300px; }
+  .shelf-table { table-layout: fixed; }
+  .shelf-table col.c-state { width: 132px; }
+  .shelf-table col.c-act { width: 268px; }
+  .bk-title { font-size: 14px; font-weight: 600; color: var(--ink); overflow-wrap: anywhere; }
+  .bk-file { font-size: 12px; color: var(--muted); margin-top: 3px; overflow-wrap: anywhere; }
+  .act-cell { white-space: nowrap; text-align: right; }
+  .act-cell .act:first-child { margin-left: 0; }
 
   /* 刮削候选卡片 */
-  .cand { display: flex; gap: 10px; align-items: flex-start; border: 1px solid var(--line);
-          border-radius: 8px; padding: 10px; margin: 8px 0; cursor: pointer; }
-  .cand.sel { border-color: var(--accent); background: #f3f8ff; }
-  .cand img { width: 52px; height: 70px; object-fit: cover; border-radius: 4px; flex: none;
-              background: #eee; }
-  .cand .info { flex: 1; font-size: 13px; }
-  .cand .t { font-weight: 600; }
-  .cand .meta { color: var(--muted); margin-top: 2px; }
-  .cand .intro { color: var(--muted); margin-top: 4px; max-height: 44px; overflow: hidden;
-                 line-height: 1.5; }
+  .cand { display: flex; gap: 11px; align-items: flex-start; border: 1px solid var(--line);
+          border-radius: 9px; padding: 11px; margin: 8px 0; cursor: pointer;
+          transition: border-color .15s, background .15s; }
+  .cand:hover { border-color: #cfd8e6; }
+  .cand.sel { border-color: var(--accent); background: #f4f8fe; }
+  .cand img { width: 52px; height: 70px; object-fit: cover; border-radius: 5px; flex: none; background: #eee; }
+  .cand .info { flex: 1; font-size: 13px; min-width: 0; }
+  .cand .t { font-weight: 600; margin-right: 6px; }
+  .cand .meta { display: block; color: var(--muted); margin-top: 4px; font-size: 12px; }
+  .cand .intro { display: block; color: var(--muted); margin-top: 5px; font-size: 12px;
+                 max-height: 46px; overflow: hidden; line-height: 1.55; }
   .cand input[type=radio] { margin-top: 4px; }
 
-  /* 封面选择 */
-  .cover-row { display: flex; gap: 14px; align-items: center; margin-top: 4px; }
-  .cover-row img { width: 88px; height: 116px; object-fit: cover; border-radius: 6px;
+  /* 封面 */
+  .cover-row { display: flex; gap: 14px; align-items: center; margin-top: 6px; }
+  .cover-row img { width: 88px; height: 116px; object-fit: cover; border-radius: 7px;
                    border: 1px solid var(--line); background: #eee; }
-  .cover-grid { display: flex; flex-wrap: nowrap; gap: 10px; margin-top: 10px;
-                overflow-x: auto; padding-bottom: 8px; }
-  .cover-item { flex: 0 0 auto; border: 2px solid var(--line); border-radius: 8px;
-                padding: 4px; cursor: pointer; text-align: center; background: #fff; }
+  .cover-grid { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+  .cover-item { flex: 0 0 auto; border: 2px solid var(--line); border-radius: 9px;
+                padding: 4px; cursor: pointer; text-align: center; background: #fff;
+                transition: border-color .15s; }
+  .cover-item:hover { border-color: #cfd8e6; }
   .cover-item.sel { border-color: var(--accent); }
-  .cover-item img { width: 96px; height: 126px; object-fit: cover; border-radius: 4px; background: #eee; }
-  .cover-item .nm { font-size: 11px; color: var(--muted); margin-top: 3px; overflow: hidden;
-                    text-overflow: ellipsis; white-space: nowrap; }
+  .cover-item img { width: 96px; height: 126px; object-fit: cover; border-radius: 5px; background: #eee; }
+  .cover-item .nm { font-size: 11px; color: var(--muted); margin-top: 4px; overflow: hidden;
+                    text-overflow: ellipsis; white-space: nowrap; max-width: 96px; }
+
+  .upload-row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin-top: 10px; }
+  .upload-row input[type=file] { width: auto; max-width: 240px; }
+  .upload-row .muted { font-size: 12px; }
+
+  .sep { border: 0; border-top: 1px solid var(--line); margin: 16px 0; }
+
+  /* 右侧抽屉：编辑面板不占页面流，底部操作栏固定 */
+  .drawer-mask { position: fixed; inset: 0; background: rgba(20,24,32,.38); z-index: 60; display: none; }
+  .drawer-mask.open { display: block; }
+  .drawer { position: fixed; top: 0; right: 0; bottom: 0; width: min(680px, 100vw); z-index: 61;
+            background: #fff; display: none; flex-direction: column;
+            box-shadow: -10px 0 30px rgba(0,0,0,.22); }
+  .drawer.open { display: flex; }
+  .drawer-head { flex: none; display: flex; align-items: center; justify-content: space-between;
+                 gap: 10px; padding: 15px 20px; border-bottom: 1px solid var(--line); }
+  .drawer-head h2 { margin: 0; font-size: 15px; font-weight: 600; color: var(--ink-soft); }
+  .drawer-body { flex: 1 1 auto; overflow-y: auto; padding: 18px 20px 28px; }
+  .drawer-body #cand-list { max-height: 330px; overflow-y: auto; padding-right: 4px; }
+  .drawer-foot { flex: none; display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+                 padding: 12px 20px; border-top: 1px solid var(--line); background: #fbfaf7; }
+  .drawer-foot .status { margin: 0; flex: 1 1 220px; }
+  body.drawer-open { overflow: hidden; }
 </style>
 </head>
 <body>
@@ -87,146 +156,185 @@
   <div class="sub" id="health-line">正在读取模板信息…</div>
 </header>
 <main>
-  <div class="grid">
-    <div>
-      <div class="card">
-        <h2>导入 TXT（可多选）</h2>
-        <input type="file" id="f-import" accept=".txt" multiple/>
-        <div style="margin-top:12px">
-          <button class="btn btn-primary" id="btn-import">导入到书架</button>
-        </div>
-        <div class="status" id="import-status"></div>
-        <div class="hint">导入后到下方书架操作：点“刮削”选择元信息、“刮封面”挑封面，确认后点“转换”。</div>
-      </div>
+  <div class="card">
+    <h2>导入 TXT</h2>
+    <div class="import-row">
+      <input type="file" id="f-import" accept=".txt" multiple/>
+      <button class="btn btn-primary" id="btn-import">导入到书架</button>
+    </div>
+    <div class="status" id="import-status"></div>
+    <div class="hint">可一次选多本。导入后到下面的书架点“刮削”补全书名/作者/简介/封面，再点“转换”生成 EPUB。</div>
+  </div>
 
-      <div class="card">
-        <h2>转换设置</h2>
-        <div class="row">
-          <div><label>封面宽度（px）</label><input type="number" id="s-cover-w" min="1" max="4000" placeholder="440"/></div>
-          <div><label>封面高度（px）</label><input type="number" id="s-cover-h" min="1" max="4000" placeholder="578"/></div>
-        </div>
-        <label>嵌入字体 <span class="muted">（默认 PingFangSC-Light）</span></label>
-        <select id="s-font">
-          <option value="">默认（PingFangSC-Light）</option>
-        </select>
-        <div style="margin-top:12px">
-          <button class="btn btn-primary" id="btn-save-settings">保存设置</button>
-        </div>
-        <div class="status" id="settings-status"></div>
-        <div class="hint">封面分辨率默认 440×578（与模板一致），可自定义，封面会按新尺寸居中裁切生成。
-          字体选项来自 <span id="s-fonts-dir">/fonts</span> 目录，放入 .ttf / .otf / .ttc 文件后刷新页面即可出现。</div>
-      </div>
+  <div class="card">
+    <div class="shelf-head">
+      <h2>书架 <span class="muted" id="shelf-count" style="font-weight:400;font-size:13px"></span></h2>
+      <label class="chk"><input type="checkbox" id="opt-noconfirm"/> 免确认删除</label>
+    </div>
+    <div class="toolbar">
+      <input type="text" id="shelf-filter" placeholder="筛选书名 / 作者 / 文件名"/>
+      <button class="btn btn-primary" id="btn-scan">扫描并转换全部</button>
+      <button class="btn btn-ghost" id="btn-scrape-all">批量刮削</button>
+      <button class="btn btn-ghost" id="btn-refresh">刷新</button>
+      <button class="btn btn-ghost" id="btn-cleanup">清理已转换源文件</button>
+      <button class="btn btn-ghost" id="btn-clear-shelf">清空书架</button>
+    </div>
+    <div class="status" id="shelf-status"></div>
+    <table class="shelf-table">
+      <colgroup><col class="c-book"/><col class="c-state"/><col class="c-act"/></colgroup>
+      <thead><tr>
+        <th>书名 / 作者</th><th>状态</th><th style="text-align:right">操作</th>
+      </tr></thead>
+      <tbody id="pending-body"></tbody>
+    </table>
+  </div>
 
-      <div class="card" id="editor-card" style="display:none">
-        <h2>刮削与编辑 <span class="muted" id="editor-stem"></span></h2>
-        <div class="row">
-          <div><label>刮削源</label>
-            <select id="e-source">
-              <option value="all">全部</option>
-              <option value="weread">微信读书</option>
-              <option value="douban">豆瓣读书</option>
-              <option value="baike">百度百科</option>
-              <option value="dangdang">当当图书</option>
-            </select>
-          </div>
-          <div style="align-self:end">
-            <button class="btn btn-ghost" id="btn-rescrape">重新刮削</button>
-          </div>
-        </div>
-        <div class="hint" id="cand-title-line"></div>
-        <div id="cand-list"></div>
-        <div class="row">
-          <div><label>书名</label><input type="text" id="e-title" placeholder="书名"/></div>
-          <div><label>作者</label><input type="text" id="e-author" placeholder="作者"/></div>
-        </div>
-        <label>简介</label>
-        <textarea id="e-desc" placeholder="简介内容"></textarea>
-        <div class="row">
-          <div><label>标签（逗号分隔）</label><input type="text" id="e-tags" placeholder="科幻, 悬疑, 小说"/></div>
-          <div><label>出版社</label><input type="text" id="e-pub" placeholder="出版社"/></div>
-        </div>
-        <label>封面</label>
-        <div class="cover-row">
-          <img id="e-cover-preview" alt="封面预览" style="display:none"/>
-          <div>
-            <button class="btn btn-ghost" id="btn-pick-cover">刮封面选一张</button>
-            <div class="muted" id="e-cover-name" style="margin-top:4px"></div>
-          </div>
-        </div>
-        <div class="row" style="margin-top:14px">
-          <button class="btn btn-primary" id="btn-save-meta">保存元信息</button>
-          <button class="btn btn-ghost" id="btn-editor-close">关闭</button>
-        </div>
-        <div class="status" id="editor-status"></div>
+  <div class="grid-2">
+    <div class="card">
+      <h2>输出结果 <span class="muted" style="font-weight:400;font-size:13px" id="output-count"></span></h2>
+      <table><tbody id="output-body"></tbody></table>
+      <div id="failed-block" style="margin-top:16px;display:none">
+        <h2 style="color:var(--bad);font-size:13px">校验未通过</h2>
+        <div id="failed-body"></div>
       </div>
-
-      <div class="card" id="cover-card" style="display:none">
-        <h2>选择封面 <span class="muted" id="cover-stem"></span></h2>
-        <div style="max-width:220px">
-          <label>刮削源</label>
-          <select id="c-source">
-            <option value="all">全部</option>
-            <option value="weread">微信读书</option>
-            <option value="douban">豆瓣读书</option>
-            <option value="baike">百度百科</option>
-            <option value="dangdang">当当图书</option>
-          </select>
-        </div>
-        <div id="cover-grid"></div>
-        <div style="margin-top:12px">
-          <button class="btn btn-ghost" id="btn-cover-close">关闭</button>
-        </div>
-        <div class="status" id="cover-status"></div>
-      </div>
-
-      <div class="card">
-        <h2>书架 / input 目录</h2>
-        <label class="chk"><input type="checkbox" id="opt-noconfirm"/>
-          免确认删除（点 🗑 / 一键删除时不再弹确认框）</label>
-        <div class="row">
-          <button class="btn btn-ghost" id="btn-scan">扫描并转换全部</button>
-          <button class="btn btn-ghost" id="btn-refresh">刷新列表</button>
-        </div>
-        <div style="margin-top:10px;display:flex;gap:10px;flex-wrap:wrap">
-          <button class="btn btn-ghost" id="btn-cleanup">清理已转换源文件</button>
-          <button class="btn btn-ghost" id="btn-clear-shelf">清空书架</button>
-        </div>
-        <table>
-          <thead><tr><th>TXT / 书名</th><th>状态</th><th>操作</th></tr></thead>
-          <tbody id="pending-body"></tbody>
-        </table>
+      <div style="margin-top:12px">
+        <button class="btn btn-ghost" id="btn-clear-output">清空输出</button>
       </div>
     </div>
 
-    <div>
-      <div class="card">
-        <h2>输出结果</h2>
-        <div style="margin-bottom:10px">
-          <button class="btn btn-ghost" id="btn-clear-output">清空输出</button>
-        </div>
-        <table>
-          <thead><tr><th>EPUB 文件</th><th>大小</th><th>时间</th><th></th></tr></thead>
-          <tbody id="output-body"></tbody>
-        </table>
-        <div id="failed-block" style="margin-top:14px;display:none">
-          <h2 style="color:var(--bad)">校验未通过</h2>
-          <div id="failed-body"></div>
-        </div>
+    <div class="card">
+      <h2>转换设置</h2>
+      <div class="row">
+        <div><label>封面宽度（px）</label><input type="number" id="s-cover-w" min="1" max="4000" placeholder="440"/></div>
+        <div><label>封面高度（px）</label><input type="number" id="s-cover-h" min="1" max="4000" placeholder="578"/></div>
       </div>
+      <label>嵌入字体 <span class="muted">（默认 PingFangSC-Light）</span></label>
+      <select id="s-font">
+        <option value="">默认（PingFangSC-Light）</option>
+      </select>
+      <div style="margin-top:14px">
+        <button class="btn btn-primary" id="btn-save-settings">保存设置</button>
+      </div>
+      <div class="status" id="settings-status"></div>
+      <div class="hint">封面分辨率默认 440×578（与模板一致），刮削下载和自行上传的封面都会按它居中裁切压缩。
+        字体来自 <span id="s-fonts-dir">/fonts</span> 目录，放入 .ttf / .otf / .ttc 后刷新页面即可出现。</div>
+    </div>
+  </div>
 
-      <div class="card">
-        <h2>运行日志 <span class="muted" style="font-weight:400">（每 3 秒自动刷新）</span></h2>
-        <pre class="log" id="log-view"></pre>
+  <div class="card">
+    <h2>运行日志 <span class="muted" style="font-weight:400;font-size:12px">每 3 秒自动刷新</span></h2>
+    <pre class="log" id="log-view"></pre>
+  </div>
+
+  <div class="grid-2">
+    <div class="card" id="sources-card">
+      <h2>刮削源 <span class="muted" style="font-weight:400;font-size:12px">配置：<span id="sources-config">sources.yml</span></span></h2>
+      <div class="toolbar">
+        <input type="text" id="probe-keyword" value="活着" style="max-width:130px" placeholder="测试书名"/>
+        <button class="btn btn-ghost" id="btn-probe-sources">检测刮削源</button>
+        <button class="btn btn-ghost" id="btn-reload-sources">重新加载配置</button>
+        <button class="btn btn-ghost" id="btn-clear-scrape-cache">清空刮削缓存</button>
       </div>
+      <div id="source-list"></div>
+      <div class="status" id="sources-status"></div>
+      <div class="hint">源配置在 <b>sources.yml</b>：可开关某个源、调请求间隔、加自定义源。某个源接口失效时会被标记出来，
+        把它关掉即可，其余源不受影响。</div>
     </div>
   </div>
 </main>
+
+<div class="drawer-mask" id="drawer-mask"></div>
+
+<aside class="drawer" id="editor-card" aria-hidden="true">
+  <div class="drawer-head">
+    <h2>刮削与编辑 <span class="muted" id="editor-stem"></span></h2>
+    <button class="btn btn-ghost act" id="btn-editor-close">关闭 ✕</button>
+  </div>
+  <div class="drawer-body">
+    <div class="row">
+      <div><label>刮削源</label>
+        <select id="e-source">
+          <option value="all">全部</option>
+          <option value="qidian">起点中文网</option>
+          <option value="weread">微信读书</option>
+          <option value="douban">豆瓣读书</option>
+          <option value="baike">百度百科</option>
+          <option value="dangdang">当当图书</option>
+        </select>
+      </div>
+      <div style="align-self:end">
+        <button class="btn btn-ghost" id="btn-rescrape">重新刮削</button>
+      </div>
+    </div>
+    <div class="hint" id="cand-title-line"></div>
+    <div id="cand-list"></div>
+    <hr class="sep"/>
+    <div class="row">
+      <div><label>书名</label><input type="text" id="e-title" placeholder="书名"/></div>
+      <div><label>作者</label><input type="text" id="e-author" placeholder="作者"/></div>
+    </div>
+    <label>简介</label>
+    <textarea id="e-desc" placeholder="简介内容"></textarea>
+    <div class="row">
+      <div><label>标签（逗号分隔）</label><input type="text" id="e-tags" placeholder="科幻, 悬疑, 小说"/></div>
+      <div><label>出版社</label><input type="text" id="e-pub" placeholder="出版社"/></div>
+    </div>
+    <label>封面</label>
+    <div class="cover-row">
+      <img id="e-cover-preview" alt="封面预览" style="display:none"/>
+      <div>
+        <button class="btn btn-ghost" id="btn-pick-cover">刮封面选一张</button>
+        <div class="muted" id="e-cover-name" style="margin-top:4px"></div>
+      </div>
+    </div>
+    <div class="upload-row">
+      <input type="file" id="f-cover-upload" accept="image/png,image/jpeg,image/webp,image/bmp,image/gif"/>
+      <button class="btn btn-ghost" id="btn-upload-cover">上传本地封面</button>
+      <span class="muted">自动按 <b id="e-cover-wh">440×578</b> 居中裁切压缩</span>
+    </div>
+  </div>
+  <div class="drawer-foot">
+    <button class="btn btn-primary" id="btn-save-meta">保存元信息</button>
+    <button class="btn btn-ghost" id="btn-save-convert">保存并转换</button>
+    <div class="status" id="editor-status"></div>
+  </div>
+</aside>
+
+<aside class="drawer" id="cover-card" aria-hidden="true">
+  <div class="drawer-head">
+    <h2>选择封面 <span class="muted" id="cover-stem"></span></h2>
+    <button class="btn btn-ghost act" id="btn-cover-close">关闭 ✕</button>
+  </div>
+  <div class="drawer-body">
+    <div style="max-width:220px">
+      <label>刮削源</label>
+      <select id="c-source">
+        <option value="all">全部</option>
+        <option value="qidian">起点中文网</option>
+        <option value="weread">微信读书</option>
+        <option value="douban">豆瓣读书</option>
+        <option value="baike">百度百科</option>
+        <option value="dangdang">当当图书</option>
+      </select>
+    </div>
+    <div id="cover-grid"></div>
+    <div class="upload-row">
+      <input type="file" id="f-cover-upload2" accept="image/png,image/jpeg,image/webp,image/bmp,image/gif"/>
+      <button class="btn btn-ghost" id="btn-upload-cover2">上传本地封面</button>
+      <span class="muted">自动按目标分辨率裁切压缩</span>
+    </div>
+  </div>
+  <div class="drawer-foot">
+    <div class="status" id="cover-status"></div>
+  </div>
+</aside>
 
 <script>
 const $ = id => document.getElementById(id);
 
 let currentStem = "";
 let currentCands = [];
+let coverSpec = { w: 440, h: 578 };
 let currentCoverUrl = "";
 let currentLocalCover = "";
 
@@ -265,6 +373,14 @@ function esc(s) {
     c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 }
 
+// 第三方封面（豆瓣/百度百科等）浏览器直连会被防盗链拦掉，统一走后端代理
+function coverSrc(url) {
+  const u = String(url || "").trim();
+  if (!u) return "";
+  if (u.startsWith("/")) return u;          // 已是本站地址（/cover/xxx）
+  return "/api/cover/proxy?url=" + encodeURIComponent(u);
+}
+
 function fmtSize(n) {
   if (n < 1024) return n + " B";
   if (n < 1048576) return (n / 1024).toFixed(1) + " KB";
@@ -274,6 +390,49 @@ function fmtSize(n) {
 function showStatus(el, text, ok) {
   el.textContent = text;
   el.className = "status " + (ok ? "ok" : "err");
+}
+
+function hideStatus(el) {
+  if (el) { el.textContent = ""; el.className = "status"; }
+}
+
+/* 抽屉：编辑面板不占页面流，内部滚动 + 底部固定操作栏 */
+function isOpen(id) {
+  const el = $(id);
+  return !!el && el.classList.contains("open");
+}
+
+function openDrawer(id) {
+  const el = $(id);
+  if (!el) return;
+  document.querySelectorAll(".drawer").forEach(d => {
+    d.classList.remove("open");
+    d.setAttribute("aria-hidden", "true");
+  });
+  $("drawer-mask").classList.add("open");
+  el.classList.add("open");
+  el.setAttribute("aria-hidden", "false");
+  document.body.classList.add("drawer-open");
+  const body = el.querySelector(".drawer-body");
+  if (body) body.scrollTop = 0;
+}
+
+function closeDrawer(id) {
+  const targets = id ? [$(id)] : Array.from(document.querySelectorAll(".drawer"));
+  targets.forEach(el => {
+    if (!el) return;
+    el.classList.remove("open");
+    el.setAttribute("aria-hidden", "true");
+  });
+  if (!document.querySelector(".drawer.open")) {
+    $("drawer-mask").classList.remove("open");
+    document.body.classList.remove("drawer-open");
+  }
+}
+
+function shelfKeyword() {
+  const el = $("shelf-filter");
+  return ((el && el.value) || "").trim().toLowerCase();
 }
 
 function noConfirm() {
@@ -288,6 +447,14 @@ async function loadHealth() {
   } else {
     $("health-line").textContent = d.message || "无法连接服务";
   }
+  if (d.sources && d.sources.length) {
+    ["e-source", "c-source"].forEach(id => {
+      const sel = $(id), cur = sel.value;
+      sel.innerHTML = '<option value="all">全部</option>' +
+        d.sources.map(x => '<option value="' + esc(x.id) + '">' + esc(x.label) + "</option>").join("");
+      sel.value = cur || "all";
+    });
+  }
 }
 
 async function loadSettings() {
@@ -295,6 +462,8 @@ async function loadSettings() {
   if (!d.ok) return;
   $("s-cover-w").value = d.cover_width || "";
   $("s-cover-h").value = d.cover_height || "";
+  coverSpec = { w: d.cover_width || 440, h: d.cover_height || 578 };
+  $("e-cover-wh").textContent = coverSpec.w + "×" + coverSpec.h;
   if (d.fonts_dir) $("s-fonts-dir").textContent = d.fonts_dir;
   const sel = $("s-font");
   sel.innerHTML = '<option value="">默认（PingFangSC-Light）</option>' +
@@ -320,6 +489,7 @@ $("btn-save-settings").onclick = async () => {
   if (d.ok) {
     showStatus(st, "已保存：封面 " + d.cover + (d.font_file ? "，字体 " + d.font_file : "，字体默认"), true);
     loadHealth();
+    loadSettings();
   } else {
     showStatus(st, d.message || "保存失败", false);
   }
@@ -327,46 +497,16 @@ $("btn-save-settings").onclick = async () => {
 
 async function loadBooks() {
   const d = await api("/api/books");
-  const ob = $("output-body"), pb = $("pending-body"), fb = $("failed-body");
-  ob.innerHTML = "";
-  if (!d.outputs || !d.outputs.length) {
-    ob.innerHTML = '<tr><td colspan="4" class="empty">还没有转换结果</td></tr>';
-  } else {
-    d.outputs.forEach(o => {
-      const tr = document.createElement("tr");
-      tr.innerHTML =
-        "<td>" + esc(o.name) + "</td><td>" + fmtSize(o.size) + "</td><td>" + o.mtime + "</td>" +
-        "<td>" +
-          '<a class="dl" href="/api/download/' + encodeURIComponent(o.name) + '">下载</a> ' +
-          '<button class="btn btn-ghost act" data-act="rmout" data-name="' + esc(o.name) + '" title="移除">🗑</button>' +
-        "</td>";
-      ob.appendChild(tr);
-    });
-  }
-  pb.innerHTML = "";
-  if (!d.pending || !d.pending.length) {
-    pb.innerHTML = '<tr><td colspan="3" class="empty">书架为空，先在上方导入 TXT</td></tr>';
-  } else {
-    d.pending.forEach(p => {
-      const tr = document.createElement("tr");
-      const titleLine = (p.title ? esc(p.title) : '<span class="muted">未识别书名</span>') +
-        (p.author ? " / " + esc(p.author) : "");
-      const badges = [];
-      if (p.has_meta) badges.push('<span class="badge ok">元信息</span>');
-      if (p.has_cover) badges.push('<span class="badge ok">封面</span>');
-      if (!badges.length) badges.push('<span class="badge">待刮削</span>');
-      tr.innerHTML =
-        "<td><div>" + esc(p.name) + "</div><div class='muted'>" + titleLine + "</div></td>" +
-        "<td>" + badges.join(" ") + "</td>" +
-        "<td>" +
-          '<button class="btn btn-ghost act" data-act="scrape" data-stem="' + esc(p.stem) + '">刮削</button>' +
-          '<button class="btn btn-ghost act" data-act="covers" data-stem="' + esc(p.stem) + '">刮封面</button>' +
-          '<button class="btn btn-ghost act" data-act="convert" data-stem="' + esc(p.stem) + '">转换</button>' +
-          '<button class="btn btn-ghost act" data-act="remove" data-stem="' + esc(p.stem) + '" title="移除">🗑</button>' +
-        "</td>";
-      pb.appendChild(tr);
-    });
-  }
+  const fb = $("failed-body");
+  renderOutputs(d.outputs || []);
+  const allPending = d.pending || [];
+  const kw = shelfKeyword();
+  const list = kw ? allPending.filter(p =>
+    (p.name + " " + (p.title || "") + " " + (p.author || "")).toLowerCase().indexOf(kw) >= 0) : allPending;
+  const cnt = $("shelf-count");
+  if (cnt) cnt.textContent = kw ? ("筛选出 " + list.length + " / " + allPending.length + " 本")
+                                : ("共 " + allPending.length + " 本");
+  renderShelf(list, kw);
   fb.innerHTML = "";
   if (d.failed && d.failed.length) {
     $("failed-block").style.display = "";
@@ -381,6 +521,66 @@ async function loadBooks() {
   }
 }
 
+/* 输出结果渲染（窄栏里的紧凑两列：文件为主、大小/时间为辅） */
+function renderOutputs(list) {
+  const ob = $("output-body");
+  if (!ob) return;
+  const cnt = $("output-count");
+  if (cnt) cnt.textContent = list.length ? ("共 " + list.length + " 个") : "";
+  ob.innerHTML = "";
+  if (!list.length) {
+    ob.innerHTML = '<tr><td colspan="2" class="empty">还没有转换结果</td></tr>';
+    return;
+  }
+  list.forEach(o => {
+    const tr = document.createElement("tr");
+    tr.innerHTML =
+      "<td>" +
+        '<div class="bk-title">' + esc(o.name) + "</div>" +
+        '<div class="bk-file muted">' + fmtSize(o.size) + " · " + o.mtime + "</div>" +
+      "</td>" +
+      '<td class="act-cell">' +
+        '<a class="dl" href="/api/download/' + encodeURIComponent(o.name) + '">下载</a> ' +
+        '<button class="btn btn-ghost act" data-act="rmout" data-name="' + esc(o.name) + '" title="移除">🗑</button>' +
+      "</td>";
+    ob.appendChild(tr);
+  });
+}
+
+/* 书架表格渲染：书名/作者为主行，文件名降为次要信息，长名字自动换行 */
+function renderShelf(list, filtered) {
+  const pb = $("pending-body");
+  if (!pb) return;
+  pb.innerHTML = "";
+  if (!list.length) {
+    pb.innerHTML = '<tr><td colspan="3" class="empty">' +
+      (filtered ? "没有匹配的书，换个关键词试试" : "书架为空，先在上方导入 TXT") + '</td></tr>';
+    return;
+  }
+  list.forEach(p => {
+    const tr = document.createElement("tr");
+    const titleLine = p.title ? esc(p.title) : '<span class="muted">未识别书名</span>';
+    const authorLine = p.author ? '<span class="muted"> · ' + esc(p.author) + "</span>" : "";
+    const badges = [];
+    if (p.has_meta) badges.push('<span class="badge ok">元信息</span>');
+    if (p.has_cover) badges.push('<span class="badge ok">封面</span>');
+    if (!badges.length) badges.push('<span class="badge">待刮削</span>');
+    tr.innerHTML =
+      "<td>" +
+        '<div class="bk-title">' + titleLine + authorLine + "</div>" +
+        '<div class="bk-file muted" title="' + esc(p.name) + '">' + esc(p.name) + "</div>" +
+      "</td>" +
+      "<td>" + badges.join(" ") + "</td>" +
+      '<td class="act-cell">' +
+        '<button class="btn btn-ghost act" data-act="scrape" data-stem="' + esc(p.stem) + '">刮削</button>' +
+        '<button class="btn btn-ghost act" data-act="covers" data-stem="' + esc(p.stem) + '">刮封面</button>' +
+        '<button class="btn btn-ghost act" data-act="convert" data-stem="' + esc(p.stem) + '">转换</button>' +
+        '<button class="btn btn-ghost act" data-act="remove" data-stem="' + esc(p.stem) + '" title="移除">🗑</button>' +
+      "</td>";
+    pb.appendChild(tr);
+  });
+}
+
 async function loadLogs() {
   const d = await api("/api/logs?tail=300");
   if (d.log) {
@@ -393,7 +593,7 @@ async function loadLogs() {
 
 /* ---------- 刮削与编辑 ---------- */
 function coverPreviewSrc() {
-  if (currentCoverUrl) return currentCoverUrl;
+  if (currentCoverUrl) return coverSrc(currentCoverUrl);
   if (currentLocalCover) {
     // 加时间戳强制浏览器重新加载，避免换了封面后预览还显示旧图
     return "/cover/" + encodeURIComponent(currentLocalCover) + "?t=" + Date.now();
@@ -412,28 +612,35 @@ function updateCoverPreview() {
                          : "未选封面（转换时会自动生成占位封面）");
 }
 
-async function openScrape(stem) {
+async function openScrape(stem, opts) {
   currentStem = stem;
   currentCoverUrl = "";
   $("editor-stem").textContent = "（" + stem + "）";
-  $("editor-card").style.display = "";
+  openDrawer("editor-card");
   $("cand-list").innerHTML = "";
   showStatus($("editor-status"), "正在搜索元信息…", true);
   const source = $("e-source").value;
-  const d = await api("/api/scrape/" + encodeURIComponent(stem) + "?source=" + encodeURIComponent(source), null, 45000);
+  let url = "/api/scrape/" + encodeURIComponent(stem) + "?source=" + encodeURIComponent(source);
+  // 允许用输入框里手动改过的书名/作者重新搜索
+  if (opts && opts.title) url += "&title=" + encodeURIComponent(opts.title);
+  if (opts && opts.author) url += "&author=" + encodeURIComponent(opts.author);
+  const d = await api(url, null, 45000);
   if (!d.ok) { showStatus($("editor-status"), d.message || "刮削失败", false); return; }
-  currentCands = d.candidates || [];
+  // 高匹配的排前面，免得在一堆低相关候选里翻
+  currentCands = (d.candidates || []).slice().sort((a, b) => (b.score || 0) - (a.score || 0));
   currentLocalCover = d.local_cover || "";
   $("cand-title-line").textContent = "搜索：" + (d.title || stem) +
     (d.author ? " / " + d.author : "") +
-    (d.source !== "all" ? "（" + (d.sources || []).map(s => s.label).join("、") + "）" : "");
+    (d.source !== "all" ? "（" + (d.sources || []).map(s => s.label).join("、") + "）" : "") +
+    "，共 " + currentCands.length + " 条候选（已按匹配度排序）";
   $("e-title").value = d.title || stem;
   $("e-author").value = d.author || "";
   $("e-desc").value = "";
   $("e-tags").value = "";
   $("e-pub").value = "";
   if (!currentCands.length) {
-    $("cand-list").innerHTML = '<div class="empty">没有搜到候选结果，可手动填写下方信息，或换个书名再刮一次。</div>';
+    $("cand-list").innerHTML = '<div class="empty">没有搜到候选结果：可以先在上方「刮削源」卡片点“检测刮削源”' +
+      '看看是否有接口失效；也可以改书名再点“重新刮削”，或手动填写下方信息。</div>';
     updateCoverPreview();
     showStatus($("editor-status"), "未刮削到结果（已保留猜测的书名/作者）", false);
     return;
@@ -442,21 +649,45 @@ async function openScrape(stem) {
   let idx = currentCands.findIndex(c => c.score >= 78);
   if (idx < 0) idx = 0;
   selectCand(idx);
-  showStatus($("editor-status"), "", true);
+  hideStatus($("editor-status"));
 }
 
-function renderCands() {
-  $("cand-list").innerHTML = currentCands.map((c, i) => `
+function candCard(c, i) {
+  return `
     <label class="cand" id="cand-${i}">
       <input type="radio" name="cand" value="${i}" onchange="selectCand(${i})"/>
-      <img src="${esc(c.cover || "")}" onerror="this.style.visibility='hidden'"/>
+      <img src="${esc(coverSrc(c.cover))}" onerror="this.style.visibility='hidden'"/>
       <span class="info">
         <span class="t">${esc(c.title)}</span>
         <span class="badge">${esc(c.source_label || "")}</span>
-        <span class="meta">${esc(c.author || "佚名")} · 评分 ${c.rating || "-"} · 匹配 ${c.score ?? 0}</span>
+        <span class="meta">${esc(c.author || "佚名")}${c.rating ? " · 评分 " + c.rating : ""} · 匹配 ${c.score ?? 0}${c.extra ? " · " + esc(c.extra) : ""}</span>
         <span class="intro">${esc(c.intro || "")}</span>
       </span>
-    </label>`).join("");
+    </label>`;
+}
+
+function renderCands() {
+  // 高匹配的直接列出来，低匹配的默认折叠：几十条候选全铺开会把表单和保存按钮挤到很下面
+  const high = [], low = [];
+  currentCands.forEach((c, i) => ((c.score || 0) >= 78 ? high : low).push(i));
+  const collapse = high.length > 0 && low.length > 0;
+  const visible = collapse ? high : currentCands.map((c, i) => i);
+  let html = visible.map(i => candCard(currentCands[i], i)).join("");
+  if (collapse) {
+    html += '<div id="cand-low" style="display:none">' +
+      low.map(i => candCard(currentCands[i], i)).join("") + "</div>" +
+      '<button class="btn btn-ghost act" id="btn-toggle-low">显示其余 ' + low.length + ' 条低匹配候选</button>';
+  }
+  $("cand-list").innerHTML = html;
+  const btn = $("btn-toggle-low");
+  if (btn) {
+    btn.onclick = () => {
+      const box = $("cand-low");
+      const show = box.style.display === "none";
+      box.style.display = show ? "" : "none";
+      btn.textContent = show ? "收起低匹配候选" : ("显示其余 " + low.length + " 条低匹配候选");
+    };
+  }
 }
 
 function selectCand(i) {
@@ -480,7 +711,7 @@ function selectCand(i) {
 async function openCovers(stem) {
   currentStem = stem;
   $("cover-stem").textContent = "（" + stem + "）";
-  $("cover-card").style.display = "";
+  openDrawer("cover-card");
   $("cover-grid").innerHTML = "";
   showStatus($("cover-status"), "正在搜索封面…", true);
   const source = $("c-source").value;
@@ -489,8 +720,8 @@ async function openCovers(stem) {
   currentLocalCover = d.local_cover || "";
   const covers = d.covers || [];
   $("cover-grid").innerHTML = covers.map((c, i) => `
-    <div class="cover-item" id="citem-${i}" onclick="pickCover(${i})">
-      <img src="${esc(c.url)}" onerror="this.style.visibility='hidden'"/>
+    <div class="cover-item" id="citem-${i}" data-url="${esc(c.url)}" onclick="pickCover(${i})">
+      <img src="${esc(coverSrc(c.url))}" onerror="this.style.visibility='hidden'"/>
       <div class="nm">${esc(c.title)}${c.author ? " / " + esc(c.author) : ""}${c.source_label ? " · " + esc(c.source_label) : ""}</div>
     </div>`).join("");
   showStatus($("cover-status"),
@@ -501,7 +732,9 @@ async function openCovers(stem) {
 async function pickCover(i) {
   const item = $("citem-" + i);
   if (!item) return;
-  const url = item.querySelector("img").src;
+  const img = item.querySelector("img");
+  // 图片 src 已被替换成后端代理地址，下载要用 data-url 里的原始地址
+  const url = item.dataset.url || (img && img.src) || "";
   document.querySelectorAll(".cover-item").forEach(el => el.classList.remove("sel"));
   item.classList.add("sel");
   showStatus($("cover-status"), "正在下载封面…", true);
@@ -513,18 +746,80 @@ async function pickCover(i) {
   if (d.ok) {
     currentCoverUrl = "";
     currentLocalCover = d.cover;
-    $("cover-card").style.display = "none";
-    if ($("editor-card").style.display !== "none") updateCoverPreview();
-    showStatus($("import-status"), "封面已保存：" + d.cover, true);
+    closeDrawer("cover-card");
+    if (isOpen("editor-card")) updateCoverPreview();
+    showStatus($("shelf-status"), "封面已保存：" + d.cover, true);
     loadBooks();
   } else {
     showStatus($("cover-status"), d.message || "封面下载失败", false);
   }
 }
 
+/* ---------- 刮削源状态 ---------- */
+const SOURCE_STATE = {
+  ok:        ["正常", "badge ok"],
+  cached:    ["缓存命中", "badge ok"],
+  empty:     ["无结果", "badge"],
+  blocked:   ["疑似风控", "badge fail"],
+  broken:    ["疑似改版", "badge fail"],
+  error:     ["请求失败", "badge fail"],
+  cooldown:  ["已熔断", "badge fail"],
+  unknown:   ["未检测", "badge"],
+};
+
+function renderSources(list) {
+  const el = $("source-list");
+  if (!el) return;
+  const rows = (list || []).map(s => {
+    const pair = SOURCE_STATE[s.state] || SOURCE_STATE.unknown;
+    const bits = [];
+    if (s.count) bits.push(s.count + " 条");
+    if (s.sample_title) bits.push("样本：" + s.sample_title);
+    if (s.elapsed) bits.push(s.elapsed + "s");
+    if (s.cache_hits) bits.push("缓存 " + s.cache_hits + " 次");
+    if (s.message) bits.push(String(s.message).slice(0, 48));
+    const name = s.enabled ? esc(s.label) : esc(s.label) + "（已关闭）";
+    return '<div style="display:flex;gap:8px;align-items:center;padding:5px 0;border-bottom:1px solid var(--line);flex-wrap:wrap">' +
+      '<span style="min-width:104px;' + (s.enabled ? '' : 'opacity:.5') + '">' + name + '</span>' +
+      '<span class="' + pair[1] + '">' + pair[0] + '</span>' +
+      '<span class="muted" style="font-size:12px">' + bits.join(" · ") + '</span>' +
+    '</div>';
+  });
+  el.innerHTML = rows.join("") || '<div class="empty">还没有源信息</div>';
+}
+
+async function loadSources() {
+  const d = await api("/api/sources");
+  if (!d.ok) return;
+  if (d.config_file) $("sources-config").textContent = d.config_file;
+  renderSources(d.sources);
+}
+
+/* ---------- 自定义封面上传 ---------- */
+async function uploadCover(stem, fileInput, statusEl) {
+  const file = fileInput.files && fileInput.files[0];
+  if (!stem) { showStatus(statusEl, "请先在书架上打开这本书的刮削/封面面板", false); return; }
+  if (!file) { showStatus(statusEl, "请先选择一张封面图片", false); return; }
+  const fd = new FormData();
+  fd.append("stem", stem);
+  fd.append("cover", file);
+  showStatus(statusEl, "正在上传并按 " + coverSpec.w + "×" + coverSpec.h + " 调整…", true);
+  const d = await api("/api/cover/upload", { method: "POST", body: fd }, 180000);
+  if (d.ok) {
+    fileInput.value = "";
+    currentCoverUrl = "";
+    currentLocalCover = d.cover;
+    updateCoverPreview();
+    showStatus(statusEl, (d.message || "封面上传成功") + "，已保存为 " + d.cover, true);
+    loadBooks();
+  } else {
+    showStatus(statusEl, d.message || "封面上传失败", false);
+  }
+}
+
 /* ---------- 事件绑定 ---------- */
 $("btn-import").onclick = async () => {
-  const st = $("import-status");
+  const st = $("import-status");   // 导入框在左栏顶部，状态就地显示
   const files = $("f-import").files;
   if (!files.length) { showStatus(st, "请先选择 TXT 文件（可多选）", false); return; }
   const fd = new FormData();
@@ -551,7 +846,7 @@ $("pending-body").addEventListener("click", async e => {
   else if (btn.dataset.act === "convert") convertOne(stem);
   else if (btn.dataset.act === "remove") {
     if (!noConfirm() && !confirm("确定从书架移除这本书吗？\n\n将删除 TXT/封面/元信息，已生成的 EPUB 不受影响。")) return;
-    const st = $("import-status");
+    const st = $("shelf-status");
     showStatus(st, "正在移除…", true);
     const d = await api("/api/remove", {
       method: "POST",
@@ -568,7 +863,7 @@ $("output-body").addEventListener("click", async e => {
   if (!btn || btn.dataset.act !== "rmout") return;
   const name = btn.dataset.name;
   if (!noConfirm() && !confirm("确定删除这个输出文件吗？\n\n" + name)) return;
-  const st = $("import-status");
+  const st = $("shelf-status");
   showStatus(st, "正在删除…", true);
   const d = await api("/api/output/remove", {
     method: "POST",
@@ -581,7 +876,7 @@ $("output-body").addEventListener("click", async e => {
 });
 
 async function convertOne(stem) {
-  const st = $("import-status");
+  const st = $("shelf-status");
   showStatus(st, "正在转换 " + stem + " …", true);
   const d = await api("/api/convert/one", {
     method: "POST",
@@ -596,13 +891,21 @@ async function convertOne(stem) {
 }
 
 $("btn-pick-cover").onclick = () => openCovers(currentStem);
-$("btn-rescrape").onclick = () => { if (currentStem) openScrape(currentStem); };
-$("e-source").onchange = () => { if (currentStem && $("editor-card").style.display !== "none") openScrape(currentStem); };
-$("c-source").onchange = () => { if (currentStem && $("cover-card").style.display !== "none") openCovers(currentStem); };
+$("btn-upload-cover").onclick = () => uploadCover(currentStem, $("f-cover-upload"), $("editor-status"));
+$("btn-upload-cover2").onclick = () => {
+  uploadCover(currentStem, $("f-cover-upload2"), $("cover-status")).then(() => {
+    if (isOpen("editor-card")) updateCoverPreview();
+  });
+};
+$("btn-rescrape").onclick = () => {
+  if (currentStem) openScrape(currentStem, { title: $("e-title").value, author: $("e-author").value });
+};
+$("e-source").onchange = () => { if (currentStem && isOpen("editor-card")) openScrape(currentStem); };
+$("c-source").onchange = () => { if (currentStem && isOpen("cover-card")) openCovers(currentStem); };
 
-$("btn-save-meta").onclick = async () => {
+async function saveMeta() {
   const st = $("editor-status");
-  if (!currentStem) return;
+  if (!currentStem) return false;
   const body = {
     stem: currentStem,
     title: $("e-title").value,
@@ -624,16 +927,29 @@ $("btn-save-meta").onclick = async () => {
     updateCoverPreview();
     showStatus(st, "元信息已保存（封面：" + (d.cover || "未选，转换时自动占位") + "）", true);
     loadBooks();
-  } else {
-    showStatus(st, d.message || "保存失败", false);
+    return true;
   }
+  showStatus(st, d.message || "保存失败", false);
+  return false;
+}
+
+$("btn-save-meta").onclick = () => saveMeta();
+
+$("btn-save-convert").onclick = async () => {
+  if (!currentStem) return;
+  const stem = currentStem;
+  if (!(await saveMeta())) return;
+  closeDrawer("editor-card");
+  convertOne(stem);
 };
 
-$("btn-editor-close").onclick = () => { $("editor-card").style.display = "none"; };
-$("btn-cover-close").onclick = () => { $("cover-card").style.display = "none"; };
+$("btn-editor-close").onclick = () => closeDrawer("editor-card");
+$("btn-cover-close").onclick = () => closeDrawer("cover-card");
+$("drawer-mask").onclick = () => closeDrawer();
+document.addEventListener("keydown", e => { if (e.key === "Escape") closeDrawer(); });
 
 $("btn-scan").onclick = async () => {
-  const st = $("import-status");
+  const st = $("shelf-status");
   showStatus(st, "正在扫描并转换 input 目录…", true);
   $("btn-scan").disabled = true;
   const d = await api("/api/scan", { method: "POST" }, 600000);
@@ -646,8 +962,23 @@ $("btn-scan").onclick = async () => {
   loadLogs();
 };
 
+$("btn-scrape-all").onclick = async () => {
+  const st = $("shelf-status");
+  showStatus(st, "正在批量刮削书架（已有元信息的会跳过，可能需要一会儿）…", true);
+  $("btn-scrape-all").disabled = true;
+  const d = await api("/api/scrape/batch", { method: "POST" }, 1800000);
+  $("btn-scrape-all").disabled = false;
+  if (!d.ok && d.message) { showStatus(st, d.message, false); return; }
+  showStatus(st,
+    "批量刮削完成：成功 " + (d.scraped || 0) + " 本（其中联网刮到 " + (d.scraped_online || 0) +
+    " 本），跳过已有元信息 " + (d.skipped || 0) + " 本，失败 " + (d.failed || 0) + " 本",
+    (d.failed || 0) === 0);
+  loadBooks();
+  loadLogs();
+};
+
 $("btn-cleanup").onclick = async () => {
-  const st = $("import-status");
+  const st = $("shelf-status");
   if (!noConfirm() && !confirm("确定要删除所有已成功转换的源文件吗？\n\n将清理 input 里的 TXT/封面 和 meta 里的元信息，已生成的 EPUB 不受影响。")) return;
   showStatus(st, "正在清理源文件…", true);
   const d = await api("/api/cleanup", { method: "POST" });
@@ -657,7 +988,7 @@ $("btn-cleanup").onclick = async () => {
 };
 
 $("btn-clear-shelf").onclick = async () => {
-  const st = $("import-status");
+  const st = $("shelf-status");
   if (!noConfirm() && !confirm("确定清空书架吗？\n\n将删除 input 下所有 TXT/封面/元信息，已生成的 EPUB 不受影响。")) return;
   showStatus(st, "正在清空书架…", true);
   const d = await api("/api/clear/bookshelf", { method: "POST" });
@@ -667,7 +998,7 @@ $("btn-clear-shelf").onclick = async () => {
 };
 
 $("btn-clear-output").onclick = async () => {
-  const st = $("import-status");
+  const st = $("shelf-status");
   if (!noConfirm() && !confirm("确定清空输出结果吗？\n\n将删除 output 目录下所有已生成的 EPUB。")) return;
   showStatus(st, "正在清空输出…", true);
   const d = await api("/api/clear/output", { method: "POST" });
@@ -676,12 +1007,48 @@ $("btn-clear-output").onclick = async () => {
   loadLogs();
 };
 
-$("btn-refresh").onclick = () => { loadBooks(); loadLogs(); };
+$("btn-refresh").onclick = () => { loadBooks(); loadLogs(); loadSources(); };
+
+$("btn-probe-sources").onclick = async () => {
+  const st = $("sources-status");
+  const kw = ($("probe-keyword").value || "活着").trim() || "活着";
+  showStatus(st, "正在逐个真实请求各源（约需几秒）…", true);
+  $("btn-probe-sources").disabled = true;
+  const d = await api("/api/sources/health?keyword=" + encodeURIComponent(kw), null, 300000);
+  $("btn-probe-sources").disabled = false;
+  if (!d.ok) { showStatus(st, d.message || "检测失败", false); return; }
+  renderSources(d.results);
+  showStatus(st, "检测词「" + d.keyword + "」：正常 " + d.ok_count + " 个，无结果 " +
+    d.empty_count + " 个，异常 " + d.bad_count + " 个", d.bad_count === 0);
+};
+
+$("btn-reload-sources").onclick = async () => {
+  const st = $("sources-status");
+  showStatus(st, "正在重新加载 sources.yml…", true);
+  const d = await api("/api/sources/reload", { method: "POST" });
+  if (!d.ok) { showStatus(st, d.message || "重新加载失败", false); return; }
+  renderSources(d.all_sources);
+  loadHealth();
+  showStatus(st, "配置已重新加载，可用源：" + (d.sources || []).map(x => x.label).join("、"), true);
+};
+
+$("btn-clear-scrape-cache").onclick = async () => {
+  const st = $("sources-status");
+  const d = await api("/api/sources/cache/clear", { method: "POST" });
+  showStatus(st, d.ok ? "已清空刮削缓存（" + (d.removed || 0) + " 条）" : (d.message || "清理失败"), d.ok);
+};
+
+let _filterTimer = null;
+$("shelf-filter").oninput = () => {
+  clearTimeout(_filterTimer);
+  _filterTimer = setTimeout(loadBooks, 200);
+};
 
 loadHealth();
 loadSettings();
 loadBooks();
 loadLogs();
+loadSources();
 setInterval(loadBooks, 5000);
 setInterval(loadLogs, 3000);
 </script>

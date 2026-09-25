@@ -2,7 +2,8 @@ FROM python:3.11-slim-bookworm
 
 ENV DEBIAN_FRONTEND=noninteractive \
     PYTHONUNBUFFERED=1 \
-    PIP_NO_CACHE_DIR=1
+    PIP_NO_CACHE_DIR=1 \
+    SOURCES_FILE=/config/sources.yml
 
 # 是否内置 calibre（ebook-convert）。
 # 默认不安装（构建快、镜像小）：转换会自动使用内置“直接打包模式”，
@@ -27,13 +28,13 @@ COPY fonts /fonts
 
 EXPOSE 8080
 
-RUN mkdir -p /input /meta /output /work /logs \
+RUN mkdir -p /input /meta /output /work /logs /config \
     && chmod +x /app/entrypoint.sh
 
 # 运行时数据目录挂载点
 # 注意：/template 与 /fonts 不能声明为 VOLUME，否则镜像内 COPY 的
 # 默认模板/字体会被空匿名卷隐藏，导致容器启动时找不到 template.yml。
-VOLUME ["/input", "/meta", "/output", "/work", "/logs"]
+VOLUME ["/input", "/meta", "/output", "/work", "/logs", "/config"]
 
 ENTRYPOINT ["/app/entrypoint.sh"]
 CMD ["web"]

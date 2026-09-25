@@ -19,3 +19,7 @@ tests/input/
 fonts/
 
 .DS_Store
+
+# 刮削源配置：每台机器不同，首次启动会自动生成
+sources.yml
+config/

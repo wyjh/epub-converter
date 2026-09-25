@@ -3,16 +3,21 @@
 
 from __future__ import annotations
 
+import hashlib
+import io
 import json
+import logging
 import os
 import re
 import threading
+import urllib.parse
 from datetime import datetime
 from pathlib import Path
 
 from flask import Flask, abort, jsonify, request, send_file, send_from_directory
 
 from app.config import Settings, sanitize_filename
+from app.cover_processor import CoverError, process_cover
 from app.converter import (
     convert_one,
     cleanup_converted_sources,
@@ -23,9 +28,16 @@ from app.converter import (
 )
 from app.main import ensure_template, setup_logging
 from app.scraper import (
-    SOURCES,
-    SOURCE_LABELS,
+    clear_scrape_cache,
+    configure_scrape_cache,
+    cover_host_suffixes,
+    default_config_path,
     download_cover,
+    fetch_cover_bytes,
+    is_valid_source,
+    list_sources,
+    probe_sources,
+    reload_sources_config,
     guess_from_txt,
     guess_from_txt_head,
     has_meta_file,
@@ -37,18 +49,28 @@ from app.template import effective_cover, list_font_files, load_template
 from app.watcher import process_all
 
 app = Flask(__name__, static_folder="static", static_url_path="/static")
+app.config["MAX_CONTENT_LENGTH"] = 32 * 1024 * 1024  # 封面/文本上传上限 32MB
 
 _LOCK = threading.Lock()
 
 
 @app.after_request
 def _no_store(resp):
-    """禁用页面缓存，避免浏览器一直用旧界面/旧连接。"""
-    resp.headers["Cache-Control"] = "no-store"
+    """禁用页面缓存，避免浏览器一直用旧界面/旧连接；封面代理除外（要缓存）。"""
+    if request.path.startswith("/api/cover/proxy"):
+        resp.headers["Cache-Control"] = "public, max-age=86400"
+    else:
+        resp.headers["Cache-Control"] = "no-store"
     return resp
 
 settings = Settings.from_env()
+# 目录参数可能是相对路径（本地开发用 ./input 这种），而 Flask 的 send_file 会按
+# 应用目录解析相对路径、与进程 CWD 不一致，所以这里统一转成绝对路径。
+for _attr in ("input_dir", "meta_dir", "fonts_dir", "output_dir",
+              "template_dir", "work_dir", "logs_dir"):
+    setattr(settings, _attr, Path(getattr(settings, _attr)).resolve())
 setup_logging(settings)
+configure_scrape_cache(settings.work_dir / "scrape_cache")
 ensure_template(settings)
 template = load_template(settings.template_dir)
 
@@ -90,6 +112,12 @@ def _apply_prefs() -> None:
 
 
 _apply_prefs()
+
+
+def _source_options() -> list:
+    """给前端下拉框用的源列表：只列已启用的。"""
+    return [{"id": s["id"], "label": s["label"], "note": s.get("note", "")}
+            for s in list_sources(include_disabled=False)]
 
 
 def _tail_log(n: int = 200) -> str:
@@ -155,6 +183,7 @@ def health():
         "fonts": [f.family for f in template.fonts],
         "font_files": list_font_files(settings.fonts_dir),
         "font_file": settings.font_file,
+        "sources": _source_options(),
         "dirs": {
             "input": str(settings.input_dir),
             "meta": str(settings.meta_dir),
@@ -284,9 +313,12 @@ def scrape_stem(stem: str):
     txt = settings.input_dir / f"{stem}.txt"
     if not txt.is_file():
         return jsonify({"ok": False, "message": "找不到该 TXT"}), 404
-    title, author = guess_from_txt(txt)
+    g_title, g_author = guess_from_txt(txt)
+    # 允许前端传入手动修正过的书名/作者再搜一次（猜错书名时最有用）
+    title = (request.args.get("title") or "").strip() or g_title
+    author = (request.args.get("author") or "").strip() or g_author
     source = request.args.get("source", "all")
-    if source not in SOURCES:
+    if source != "all" and not is_valid_source(source):
         source = "all"
     candidates = search_candidates(title, author, source=source)
     local_cover = same_stem_cover(settings.input_dir, stem)
@@ -296,7 +328,7 @@ def scrape_stem(stem: str):
         "title": title,
         "author": author,
         "source": source,
-        "sources": [{"id": s, "label": SOURCE_LABELS[s]} for s in SOURCES],
+        "sources": _source_options(),
         "candidates": candidates,
         "local_cover": local_cover.name if local_cover else "",
     })
@@ -309,9 +341,12 @@ def covers_stem(stem: str):
     txt = settings.input_dir / f"{stem}.txt"
     if not txt.is_file():
         return jsonify({"ok": False, "message": "找不到该 TXT"}), 404
-    title, author = guess_from_txt(txt)
+    g_title, g_author = guess_from_txt(txt)
+    # 允许前端传入手动修正过的书名/作者再搜一次（猜错书名时最有用）
+    title = (request.args.get("title") or "").strip() or g_title
+    author = (request.args.get("author") or "").strip() or g_author
     source = request.args.get("source", "all")
-    if source not in SOURCES:
+    if source != "all" and not is_valid_source(source):
         source = "all"
     candidates = search_candidates(title, author, source=source)
     seen = set()
@@ -331,10 +366,72 @@ def covers_stem(stem: str):
         "ok": True,
         "stem": stem,
         "source": source,
-        "sources": [{"id": s, "label": SOURCE_LABELS[s]} for s in SOURCES],
+        "sources": _source_options(),
         "covers": covers,
         "local_cover": local_cover.name if local_cover else "",
     })
+
+
+COVER_PREVIEW_MAX_EDGE = 480          # 页面预览用的最大边长（原图下载不受影响）
+COVER_CACHE_DIRNAME = "cover_cache"
+
+
+def _cover_cache_file(url: str) -> Path:
+    digest = hashlib.sha256(url.encode("utf-8")).hexdigest()
+    return settings.work_dir / COVER_CACHE_DIRNAME / f"{digest}.jpg"
+
+
+def _render_cover_preview(data: bytes) -> bytes:
+    """把封面转成小尺寸 JPEG 供页面预览，避免几 MB 的原图拖慢候选列表。"""
+    from PIL import Image
+    with Image.open(io.BytesIO(data)) as img:
+        if img.mode in ("RGBA", "LA", "P"):
+            rgba = img.convert("RGBA")
+            bg = Image.new("RGBA", rgba.size, (255, 255, 255, 255))
+            img = Image.alpha_composite(bg, rgba).convert("RGB")
+        else:
+            img = img.convert("RGB")
+        if max(img.size) > COVER_PREVIEW_MAX_EDGE:
+            img.thumbnail((COVER_PREVIEW_MAX_EDGE, COVER_PREVIEW_MAX_EDGE), Image.LANCZOS)
+        buf = io.BytesIO()
+        img.save(buf, format="JPEG", quality=82, optimize=True)
+    return buf.getvalue()
+
+
+@app.get("/api/cover/proxy")
+def cover_proxy():
+    """封面预览代理。
+
+    豆瓣、百度百科的图床会检查 Referer，浏览器 <img> 直连一律 403（页面上就是一片空白），
+    所以候选封面统一由后端带正确 Referer 取回；顺带缩成小图并缓存。
+    """
+    raw = (request.args.get("url") or "").strip()
+    if raw.startswith("//"):
+        raw = "https:" + raw
+    parsed = urllib.parse.urlparse(raw)
+    host = (parsed.hostname or "").lower()
+    if parsed.scheme not in ("http", "https") or not host:
+        return jsonify({"ok": False, "message": "封面地址不合法"}), 400
+    # 白名单：只允许已知书封图床，避免这个接口被当成任意 URL 代理
+    if not any(host == suffix or host.endswith("." + suffix) for suffix in cover_host_suffixes()):
+        return jsonify({"ok": False, "message": "不允许代理该域名的图片"}), 403
+
+    cache = _cover_cache_file(raw)
+    if not cache.is_file():
+        data = fetch_cover_bytes(raw)
+        if not data:
+            return jsonify({"ok": False, "message": "封面获取失败"}), 502
+        try:
+            data = _render_cover_preview(data)
+        except Exception as exc:
+            logging.getLogger("web").warning("封面预览处理失败 %s：%s", raw, exc)
+            return jsonify({"ok": False, "message": "封面无法解析"}), 502
+        try:
+            cache.parent.mkdir(parents=True, exist_ok=True)
+            cache.write_bytes(data)
+        except OSError as exc:
+            logging.getLogger("web").debug("封面缓存写入失败：%s", exc)
+    return send_file(cache, mimetype="image/jpeg", max_age=86400)
 
 
 @app.post("/api/cover/save")
@@ -349,6 +446,71 @@ def cover_save():
     ok = download_cover(url, dest)
     return jsonify({"ok": ok, "cover": dest.name if ok else None,
                     "message": "" if ok else "封面下载失败"})
+
+
+COVER_UPLOAD_EXTS = (".jpg", ".jpeg", ".png", ".webp", ".bmp", ".gif", ".tif", ".tiff")
+
+
+@app.post("/api/cover/upload")
+def cover_upload():
+    """上传自定义封面：按项目当前分辨率居中裁切 + 缩放 + 压缩后替换该书封面。"""
+    stem = sanitize_filename(str(request.form.get("stem", "")), 60)
+    if not stem:
+        return jsonify({"ok": False, "message": "缺少 stem"}), 400
+    txt = settings.input_dir / f"{stem}.txt"
+    if not txt.is_file():
+        return jsonify({"ok": False, "message": "找不到该 TXT"}), 404
+    upload = request.files.get("cover")
+    if upload is None or not upload.filename:
+        return jsonify({"ok": False, "message": "请选择要上传的封面图片"}), 400
+    ext = Path(upload.filename).suffix.lower()
+    if ext not in COVER_UPLOAD_EXTS:
+        return jsonify({"ok": False, "message": "封面格式不支持（请用 JPG/PNG/WebP/BMP）"}), 400
+
+    spec = effective_cover(template, settings)
+    tmp_dir = settings.work_dir / "_cover_upload"
+    tmp = tmp_dir / f"{stem}{ext}"
+    dest = settings.input_dir / f"{stem}.jpg"
+    try:
+        with _LOCK:
+            tmp_dir.mkdir(parents=True, exist_ok=True)
+            upload.save(tmp)
+            process_cover(tmp, dest, spec)          # 尺寸/比例/质量全部按模板锁定
+            # 清掉同名旧封面，避免新旧封面同时存在导致下次转换又用回旧图
+            for other_ext in (".png", ".jpeg"):
+                stale = settings.input_dir / f"{stem}{other_ext}"
+                if stale.is_file():
+                    stale.unlink()
+            meta_path = settings.meta_dir / f"{stem}.yaml"
+            if meta_path.is_file():
+                import yaml
+                data = yaml.safe_load(meta_path.read_text(encoding="utf-8")) or {}
+                if isinstance(data, dict):
+                    data["cover"] = dest.name
+                    meta_path.write_text(
+                        yaml.safe_dump(data, allow_unicode=True, sort_keys=False),
+                        encoding="utf-8",
+                    )
+    except CoverError as exc:
+        return jsonify({"ok": False, "message": str(exc)}), 400
+    except Exception as exc:
+        return jsonify({"ok": False, "message": f"封面上传失败：{exc}"}), 500
+    finally:
+        try:
+            tmp.unlink()
+        except OSError:
+            pass
+
+    logging.getLogger("web").info(
+        "[%s] 已上传自定义封面并调整为 %dx%d", stem, spec.width, spec.height
+    )
+    return jsonify({
+        "ok": True,
+        "cover": dest.name,
+        "width": spec.width,
+        "height": spec.height,
+        "message": f"封面已按 {spec.width}×{spec.height} 自动调整",
+    })
 
 
 @app.post("/api/meta/save")
@@ -415,11 +577,98 @@ def convert_one_api():
     return jsonify(payload), 200 if res.status != "failed" else 422
 
 
+@app.get("/api/sources")
+def sources_list_api():
+    """列出全部刮削源（含被禁用的）与各自最近一次请求的状态。"""
+    return jsonify({
+        "ok": True,
+        "sources": list_sources(include_disabled=True),
+        "config_file": str(default_config_path()),
+    })
+
+
+@app.get("/api/sources/health")
+def sources_health_api():
+    """逐个真实请求每个源做自检：哪个源还活着、返回了什么样本。"""
+    keyword = (request.args.get("keyword") or "活着").strip() or "活着"
+    source = request.args.get("source") or "all"
+    if source != "all" and not is_valid_source(source):
+        source = "all"
+    results = probe_sources(keyword, source=source)
+    bad_states = ("blocked", "broken", "error", "cooldown")
+    return jsonify({
+        "ok": True,
+        "keyword": keyword,
+        "time": datetime.now().isoformat(timespec="seconds"),
+        "results": results,
+        "ok_count": sum(1 for r in results if r.get("state") in ("ok", "cached")),
+        "empty_count": sum(1 for r in results if r.get("state") == "empty"),
+        "bad_count": sum(1 for r in results if r.get("state") in bad_states),
+    })
+
+
+@app.post("/api/sources/reload")
+def sources_reload_api():
+    """重新读取 sources.yml（改完配置不用重启服务）。"""
+    reload_sources_config()
+    return jsonify({
+        "ok": True,
+        "sources": _source_options(),
+        "all_sources": list_sources(include_disabled=True),
+        "config_file": str(default_config_path()),
+    })
+
+
+@app.post("/api/sources/cache/clear")
+def sources_cache_clear_api():
+    """清空刮削结果缓存。"""
+    return jsonify({"ok": True, "removed": clear_scrape_cache()})
+
+
 @app.post("/api/scan")
 def scan():
     with _LOCK:
         summary = process_all(settings, template, force=bool(request.form.get("force") == "1"))
     return jsonify(summary)
+
+
+@app.post("/api/scrape/batch")
+def scrape_batch():
+    """批量刮削书架：默认处理 input 下所有 TXT，已有元信息的直接跳过。"""
+    wanted = [s.strip() for s in (request.form.get("stems") or "").split(",") if s.strip()]
+    txts = sorted(settings.input_dir.glob("*.txt"))
+    if wanted:
+        txts = [t for t in txts if t.stem in wanted]
+    results, skipped = [], 0
+    with _LOCK:
+        for txt in txts:
+            if has_meta_file(settings.meta_dir, txt.stem):
+                skipped += 1
+                continue
+            try:
+                prep = prepare_book_files(txt, settings, template, scrape=True)
+            except Exception as exc:
+                results.append({"stem": txt.stem, "ok": False, "message": str(exc)})
+                continue
+            cover = prep.get("cover_path")
+            results.append({
+                "stem": txt.stem,
+                "ok": True,
+                "title": prep.get("title", ""),
+                "author": prep.get("author", ""),
+                "scraped": bool(prep.get("scraped")),
+                "cover": cover.name if cover else "",
+            })
+    ok = sum(1 for r in results if r.get("ok"))
+    return jsonify({
+        "ok": True,
+        "total": len(txts),
+        "scraped": ok,
+        "scraped_online": sum(1 for r in results if r.get("scraped")),
+        "skipped": skipped,
+        "failed": len(results) - ok,
+        "results": results,
+    })
 
 
 @app.post("/api/convert/upload")

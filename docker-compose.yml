@@ -18,3 +18,4 @@ services:
       - ./fonts:/fonts              # 字体目录：放入任意 .ttf/.otf/.ttc 自动识别，可覆盖镜像内置字体
       - ./output:/output            # 转换结果 + 日志
       - ./template:/template        # 固化模板（可放 sample.epub 自动提取）
+      - ./config:/config            # 刮削源配置（sources.yml，首次启动自动生成）
