@@ -79,6 +79,13 @@ def main() -> int:
     check("无编号章节保留", "尾声" in labels, str(labels))
     check("章节标题提取", chapters[0].title == "开篇", chapters[0].title)
 
+    # 章节名以括号结尾（"第3章 洗头的时候不要闭眼（2）"）不能被当成正文丢掉
+    bracket_sample = ["第1章 开始（1）", "　　正文一。", "第2章 继续（2）", "　　正文二。",
+                      "第3章 收尾(3)", "　　正文三。"]
+    bracket_chapters = split_chapters(bracket_sample, template.chapter_patterns)
+    check("括号结尾的章节名不被丢弃", len(bracket_chapters) == 3,
+          str([c.label for c in bracket_chapters]))
+
     gbk_lines = clean_lines(t2, template.cleaning)
     gbk_chapters = split_chapters(gbk_lines, template.chapter_patterns)
     check("GBK 章节切分", [c.label for c in gbk_chapters] == ["序章", "第7章"],

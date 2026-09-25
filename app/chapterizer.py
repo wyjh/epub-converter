@@ -67,7 +67,9 @@ def is_chapter_heading(line: str, patterns: list) -> bool:
     s = line.strip()
     if len(s) > 60:
         return False
-    if s.endswith(("。", "！", "？", "…", "”", "’", "」", "』", "）", ")", "：", "；", "——")):
+    # 注意：括号不算句末标点。"第3章 洗头的时候不要闭眼（2）" 这类标题很常见，
+    # 早期把 ）) 也当句末标点排除，导致整本书的章节全部识别不到。
+    if s.endswith(("。", "！", "？", "…", "”", "’", "」", "』", "：", "；", "——")):
         return False
     return True
 
